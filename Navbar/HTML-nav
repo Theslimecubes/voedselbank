@@ -10,7 +10,6 @@
     <nav class="navbar">
         <ul class="nav-list">
             <li><a href="#home">Home</a></li>
-            <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
                 <a href="#" class="dropbtn">Overzicht</a>
                 <div class="dropdown-content">
@@ -19,6 +18,10 @@
                     <a href="#gezinnen">Gezinnen</a>
                     <a href="#leverancieren">Leverancieren</a>
                     <a href="#vpakket">Voedsel pakketten</a>
+            <li><a href="#contact">Contact</a></li>
+            <div class="button">
+                <button class="background-3"><span class="login">Login</span></button>
+              </div>
                 </div>
             </li>
         </ul>

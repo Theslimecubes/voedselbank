@@ -1,4 +1,4 @@
-{
+.body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -69,4 +69,34 @@
   
   .dropdown:hover .dropdown-content {
       display: block;
+  }
+
+  .background-3 {
+    position: relative;
+    width: 70px;
+    height: 21px;
+    margin: 3px 0 0 3px;
+    cursor: pointer;
+    background: #f3600e;
+    border: 1px solid #fa732e;
+    z-index: 29;
+    border-radius: 8.75px;
+  }
+
+  .login {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 13px;
+    right: 23px;
+    bottom: 4px;
+    color: #f9bd9c;
+    font-family: Inter, var(--default-font-family);
+    font-size: 8.800000190734863px;
+    font-weight: 600;
+    line-height: 10.65px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 30;
   }
