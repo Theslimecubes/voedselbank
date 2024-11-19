@@ -6,11 +6,9 @@
     }
     
     .image {
-        position: absolute;
+        position: flex;
         width: 37px;
         height: 33px;
-        right: 598px;
-        bottom: 4px;
         background: url(Voedselbank-logo.png)
           no-repeat center;
         background-size: cover;
@@ -93,17 +91,7 @@
           background: rgba(0, 0, 0, 0);
           z-index: 26;
         }
-        .image {
-          position: absolute;
-          width: 37px;
-          height: 33px;
-          right: 598px;
-          bottom: 4px;
-          background: url(Voedselbank-logo.png)
-            no-repeat center;
-          background-size: cover;
-          z-index: 39;
-        }
+        
         .groups-1 {
           position: absolute;
           width: 96px;
@@ -148,16 +136,9 @@
           z-index: 36;
         }
         .voedselbank-maas {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          position: absolute;
-          height: 14px;
-          right: 478px;
-          bottom: 11px;
           color: #606060;
           font-family: Inter, var(--default-font-family);
-          font-size: 8.800000190734863px;
+          font-size: 10px;
           font-weight: 600;
           line-height: 10.65px;
           text-align: left;
