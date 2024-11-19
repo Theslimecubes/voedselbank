@@ -165,7 +165,7 @@
           z-index: 38;
         }
         .button {
-          position: absolute;
+          position: flex;
           width: 73px;
           height: 24px;
           right: 11px;
