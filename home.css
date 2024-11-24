@@ -50,35 +50,40 @@
   text-align: center;
 }
 
+.dropbtn {
+    padding: 14px 20px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+  }
+
 .dropdown {
   position: relative;
-}
-
-.dropbtn {
-  display: block;
-  padding: 14px 20px;
-  background-color: white;
-  color: black;
-  text-decoration: none;
-  text-align: center;
-  border: none;
-  cursor: pointer;
+  display: inline-block;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
+  color: black;
+  background-color: #f9f9f9;
   min-width: 160px;
-  z-index: 100;
 }
 
 .dropdown-content a {
   padding: 12px 16px;
-  color: white;
+  color: black;
   text-decoration: none;
   display: block;
 }
 
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
 .dropdown-content 
   body {
@@ -139,9 +144,9 @@
     bottom: 7px;
     color: #5f5f5f;
     font-family: Inter, var(--default-font-family);
-    font-size: 7.900000095367432px;
+    font-size: 8px;
     font-weight: 600;
-    line-height: 9.561px;
+    line-height: 9.5px;
     text-align: left;
     white-space: nowrap;
     z-index: 36;
@@ -186,7 +191,7 @@
     bottom: 4px;
     color: #f9bd9c;
     font-family: Inter, var(--default-font-family);
-    font-size: 8.800000190734863px;
+    font-size: 9px;
     font-weight: 600;
     line-height: 10.65px;
     text-align: left;
@@ -220,7 +225,7 @@
     bottom: 12px;
     color: #5f5f5f;
     font-family: Inter, var(--default-font-family);
-    font-size: 7.900000095367432px;
+    font-size: 8px;
     font-weight: 600;
     line-height: 9.561px;
     text-align: left;
@@ -237,9 +242,9 @@
     bottom: 13px;
     color: #f69863;
     font-family: Inter, var(--default-font-family);
-    font-size: 7.900000095367432px;
+    font-size: 8px;
     font-weight: 600;
-    line-height: 9.561px;
+    line-height: 9.5px;
     text-align: left;
     white-space: nowrap;
     z-index: 37;
@@ -250,7 +255,6 @@
     height: 442px;
     margin: 1px 0 0 0;
     background: rgba(0, 0, 0, 0);
-    z-index: 20;
     overflow: visible auto;
   }
   .image-5 {
@@ -289,9 +293,9 @@
     margin: 7px 0 0 72px;
     color: #717171;
     font-family: Inter, var(--default-font-family);
-    font-size: 8.699999809265137px;
+    font-size: 9px;
     font-weight: 600;
-    line-height: 10.529px;
+    line-height: 10.5px;
     text-align: left;
     white-space: nowrap;
     z-index: 24;
@@ -306,9 +310,9 @@
     bottom: 226px;
     color: #f4f1ee;
     font-family: Inter, var(--default-font-family);
-    font-size: 30.100000381469727px;
+    font-size: 30px;
     font-weight: 300;
-    line-height: 36.428px;
+    line-height: 36px;
     text-align: left;
     white-space: nowrap;
     z-index: 22;
@@ -330,7 +334,7 @@
     margin: 0 0 0 39px;
     color: #4f4f4f;
     font-family: Inter, var(--default-font-family);
-    font-size: 15.899999618530273px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 19px;
     text-align: left;
@@ -433,7 +437,7 @@
     font-family: Inter, var(--default-font-family);
     font-size: 10.5px;
     font-weight: 600;
-    line-height: 16.285px;
+    line-height: 16px;
     text-align: left;
     text-overflow: initial;
     z-index: 9;
@@ -449,7 +453,7 @@
     bottom: 4px;
     color: #f9b995;
     font-family: Inter, var(--default-font-family);
-    font-size: 8.800000190734863px;
+    font-size: 9px;
     font-weight: 600;
     line-height: 10.65px;
     text-align: left;
