@@ -1,0 +1,462 @@
+:root {
+    --default-font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+      "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+      "Source Han Sans CN", sans-serif;
+  }
+  
+  input,
+  select,
+  textarea,
+  button {
+    outline: 0;
+  }
+  
+  html, body {
+    margin: 0;
+    height: 100%;
+}
+
+.image {
+  position: flex;
+  width: 37px;
+  height: 33px;
+  background: url(Images/Voedselbank-logo.png)
+    no-repeat center;
+  background-size: cover;
+  }
+  
+
+.navbar {
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+
+.nav-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-list li {
+  position: relative;
+}
+
+.nav-list a {
+  display: block;
+  padding: 14px 20px;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+}
+
+.dropbtn {
+    padding: 14px 20px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+  }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  color: black;
+  background-color: #f9f9f9;
+  min-width: 160px;
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content 
+  body {
+      font-family: Arial, sans-serif;
+      width: 100%;
+      box-sizing: border-box;
+  }
+
+  .main-container {
+    position: relative;
+    width: 667px;
+    height: 1440px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0);
+  }
+  .groups {
+    position: relative;
+    width: 667px;
+    height: 41px;
+    margin: 0 0 0 0;
+    background: rgba(0, 0, 0, 0);
+    z-index: 26;
+  }
+  
+  .groups-1 {
+    position: absolute;
+    width: 96px;
+    height: 34px;
+    right: 224px;
+    bottom: 1px;
+    background: rgba(0, 0, 0, 0);
+    z-index: 32;
+  }
+  .text {
+    position: relative;
+    width: 77px;
+    height: 27px;
+    margin: 4px 0 0 12px;
+    background: rgba(0, 0, 0, 0);
+    z-index: 33;
+    overflow: visible auto;
+  }
+  .background {
+    position: relative;
+    width: 76px;
+    height: 26px;
+    margin: 0 0 0 0;
+    background: #ffffff;
+    z-index: 34;
+  }
+  .overview {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 12px;
+    right: 21px;
+    bottom: 7px;
+    color: #5f5f5f;
+    font-family: Inter, var(--default-font-family);
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 9.5px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 36;
+  }
+  .voedselbank-maas {
+    color: #606060;
+    font-family: Inter, var(--default-font-family);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 10.65px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 38;
+  }
+  .button {
+    position: flex;
+    width: 73px;
+    height: 24px;
+    right: 11px;
+    bottom: 7px;
+    background: rgba(0, 0, 0, 0);
+    z-index: 28;
+  }
+.background-3 {
+    position: relative;
+    width: 70px;
+    height: 21px;
+    margin: 3px 0 0 3px;
+    cursor: pointer;
+    background: #f3600e;
+    border: 1px solid #fa732e;
+    z-index: 29;
+    border-radius: 8.75px;
+  }
+  .login {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 13px;
+    right: 23px;
+    bottom: 4px;
+    color: #f9bd9c;
+    font-family: Inter, var(--default-font-family);
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 10.65px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 30;
+  }
+  .nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 14px;
+    right: 478px;
+    bottom: 11px;
+    color: #606060;
+    font-family: Inter, var(--default-font-family);
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 10.65px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 38;
+  }
+  .contact {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 12px;
+    right: 167px;
+    bottom: 12px;
+    color: #5f5f5f;
+    font-family: Inter, var(--default-font-family);
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 9.561px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 31;
+  }
+  .home {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 11px;
+    right: 340px;
+    bottom: 13px;
+    color: #f69863;
+    font-family: Inter, var(--default-font-family);
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 9.5px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 37;
+  }
+  .groups-4 {
+    position: relative;
+    width: 667px;
+    height: 442px;
+    margin: 1px 0 0 0;
+    background: rgba(0, 0, 0, 0);
+    overflow: visible auto;
+  }
+  .image-5 {
+    position: relative;
+    width: 667px;
+    height: 439px;
+    margin: 0 0 0 0;
+    background: url(Images/Voedselbank-home.png)
+      no-repeat center;
+    background-size: cover;
+  }
+  .background-6 {
+    position: absolute;
+    width: 253px;
+    height: 196px;
+    right: 364px;
+    bottom: 167px;
+    background: #ffffff;
+    z-index: 23;
+    border-radius: 10px;
+  }
+  .image-7 {
+    position: relative;
+    width: 101px;
+    height: 88px;
+    margin: 48px 0 0 73px;
+    background: url(Images/Voedselbank-logo.png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 25;
+  }
+  .voedselbank-maas-8 {
+    display: block;
+    position: relative;
+    height: 14px;
+    margin: 7px 0 0 72px;
+    color: #717171;
+    font-family: Inter, var(--default-font-family);
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 10.5px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 24;
+  }
+  .welkom {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 41px;
+    right: 163px;
+    bottom: 226px;
+    color: #f4f1ee;
+    font-family: Inter, var(--default-font-family);
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 36px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 22;
+  }
+  .groups-9 {
+    position: relative;
+    width: 634px;
+    height: 521px;
+    margin: 48px 0 0 0;
+    font-size: 0px;
+    background: rgba(0, 0, 0, 0);
+    z-index: 1;
+    overflow: visible auto;
+  }
+  .voedsel-pakketen {
+    display: block;
+    position: relative;
+    height: 19px;
+    margin: 0 0 0 39px;
+    color: #4f4f4f;
+    font-family: Inter, var(--default-font-family);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 19;
+  }
+  .flex-row {
+    position: relative;
+    width: 634px;
+    height: 198px;
+    margin: 1px 0 0 0;
+    z-index: 12;
+  }
+  .groups-a {
+    position: absolute;
+    width: 569px;
+    height: 198px;
+    right: 28px;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0);
+    z-index: 12;
+  }
+  .groups-b {
+    position: absolute;
+    width: 178px;
+    height: 198px;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0);
+    z-index: 13;
+  }
+  .image-c {
+    position: relative;
+    width: 176px;
+    height: 191px;
+    margin: 5px 0 0 0;
+    background: url(Images/voedselbanken-1.png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 14;
+    border-radius: 13px 6px 6px 13px;
+  }
+  .groups-d {
+    position: absolute;
+    width: 179px;
+    height: 193px;
+    right: 195px;
+    bottom: 2px;
+    background: rgba(0, 0, 0, 0);
+    z-index: 15;
+  }
+  .image-e {
+    position: relative;
+    width: 178px;
+    height: 191px;
+    margin: 2px 0 0 1px;
+    background: url(Images/voedselbanken-2.png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 16;
+    border-radius: 13px;
+  }
+  .groups-f {
+    position: absolute;
+    width: 178px;
+    height: 193px;
+    right: 391px;
+    bottom: 2px;
+    background: rgba(0, 0, 0, 0);
+    z-index: 17;
+  }
+  .image-10 {
+    position: relative;
+    width: 178px;
+    height: 191px;
+    margin: 2px 0 0 1px;
+    background: url(Images/voedselbanken-3.png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 18;
+    border-radius: 13px;
+  }
+  .flex-row-13 {
+    position: relative;
+    width: 575px;
+    height: 285px;
+    margin: 18px 0 0 33px;
+    z-index: 5;
+  }
+  
+  .voedsel-pakketen-dol {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    width: 201px;
+    height: 166px;
+    margin: 10px 0 0 15px;
+    color: #818181;
+    font-family: Inter, var(--default-font-family);
+    font-size: 10.5px;
+    font-weight: 600;
+    line-height: 16px;
+    text-align: left;
+    text-overflow: initial;
+    z-index: 9;
+    overflow: hidden;
+  }
+  .voedsel-pakketen-1a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 13px;
+    right: 67px;
+    bottom: 4px;
+    color: #f9b995;
+    font-family: Inter, var(--default-font-family);
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 10.65px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 8;
+  }
