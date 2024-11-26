@@ -1,0 +1,235 @@
+
+  body {
+      font-family: Arial, sans-serif;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    .image {
+        position: flex;
+        width: 37px;
+        height: 33px;
+        background: url(Voedselbank-logo.png)
+          no-repeat center;
+        background-size: cover;
+        }
+        
+
+    .navbar {
+        background-color: #FFFFFF;
+        overflow: hidden;
+    }
+    
+    .nav-list {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .nav-list li {
+        position: relative;
+    }
+    
+    .nav-list a {
+        display: block;
+        padding: 14px 20px;
+        color: black;
+        text-decoration: none;
+        text-align: center;
+    }
+    
+    .dropdown {
+        position: relative;
+    }
+    
+    .dropbtn {
+        display: block;
+        padding: 14px 20px;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        min-width: 160px;
+        z-index: 1;
+    }
+    
+    .dropdown-content a {
+        padding: 12px 16px;
+        color: white;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: #FFFfFF;
+    }
+    
+    .dropdown-content 
+        body {
+            font-family: Arial, sans-serif;
+            width: 100%;
+            box-sizing: border-box;
+        }
+      
+        .main-container {
+          position: relative;
+          width: 667px;
+          height: 1440px;
+          margin: 0 auto;
+          background: rgba(0, 0, 0, 0);
+        }
+        .groups {
+          position: relative;
+          width: 667px;
+          height: 41px;
+          margin: 0 0 0 0;
+          background: rgba(0, 0, 0, 0);
+          z-index: 26;
+        }
+        
+        .groups-1 {
+          position: absolute;
+          width: 96px;
+          height: 34px;
+          right: 224px;
+          bottom: 1px;
+          background: rgba(0, 0, 0, 0);
+          z-index: 32;
+        }
+        .text {
+          position: relative;
+          width: 77px;
+          height: 27px;
+          margin: 4px 0 0 12px;
+          background: rgba(0, 0, 0, 0);
+          z-index: 33;
+          overflow: visible auto;
+        }
+        .background {
+          position: relative;
+          width: 76px;
+          height: 26px;
+          margin: 0 0 0 0;
+          background: #ffffff;
+          z-index: 34;
+        }
+        .overview {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          position: absolute;
+          height: 12px;
+          right: 21px;
+          bottom: 7px;
+          color: #5f5f5f;
+          font-family: Inter, var(--default-font-family);
+          font-size: 7.900000095367432px;
+          font-weight: 600;
+          line-height: 9.561px;
+          text-align: left;
+          white-space: nowrap;
+          z-index: 36;
+        }
+        .voedselbank-maas {
+          color: #606060;
+          font-family: Inter, var(--default-font-family);
+          font-size: 10px;
+          font-weight: 600;
+          line-height: 10.65px;
+          text-align: left;
+          white-space: nowrap;
+          z-index: 38;
+        }
+        .button {
+          position: flex;
+          width: 73px;
+          height: 24px;
+          right: 11px;
+          bottom: 7px;
+          background: rgba(0, 0, 0, 0);
+          z-index: 28;
+        }
+      .background-3 {
+          position: relative;
+          width: 70px;
+          height: 21px;
+          margin: 3px 0 0 3px;
+          cursor: pointer;
+          background: #f3600e;
+          border: 1px solid #fa732e;
+          z-index: 29;
+          border-radius: 8.75px;
+        }
+        .login {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          position: absolute;
+          height: 13px;
+          right: 23px;
+          bottom: 4px;
+          color: #f9bd9c;
+          font-family: Inter, var(--default-font-family);
+          font-size: 8.800000190734863px;
+          font-weight: 600;
+          line-height: 10.65px;
+          text-align: left;
+          white-space: nowrap;
+          z-index: 30;
+        }
+        .nav-button {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          position: absolute;
+          height: 14px;
+          right: 478px;
+          bottom: 11px;
+          color: #606060;
+          font-family: Inter, var(--default-font-family);
+          font-size: 8px;
+          font-weight: 600;
+          line-height: 10.65px;
+          text-align: left;
+          white-space: nowrap;
+          z-index: 38;
+        }
+        .contact {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          position: absolute;
+          height: 12px;
+          right: 167px;
+          bottom: 12px;
+          color: #5f5f5f;
+          font-family: Inter, var(--default-font-family);
+          font-size: 7.900000095367432px;
+          font-weight: 600;
+          line-height: 9.561px;
+          text-align: left;
+          white-space: nowrap;
+          z-index: 31;
+        }
+        .home {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          position: absolute;
+          height: 11px;
+          right: 340px;
+          bottom: 13px;
+          color: #f69863;
+          font-family: Inter, var(--default-font-family);
+          font-size: 7.900000095367432px;
+          font-weight: 600;
+          line-height: 9.561px;
+          text-align: left;
+          white-space: nowrap;
+          z-index: 37;
+        };
