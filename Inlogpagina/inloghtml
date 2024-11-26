@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welkom</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="logo"></div>
+
+      <h1>Welkom, ...</h1>
+
+      <?php if ($error != "") { ?>
+        <div class="error" style="color: red; margin-bottom: 1rem;"><?php echo $error; ?></div>
+      <?php } ?>
+
+      <form class="login-form" method="post" action="">
+        <input 
+          type="email" 
+          class="input-field" 
+          name="email"
+          placeholder="email..." 
+          required
+        >
+        <input 
+          type="password" 
+          class="input-field" 
+          name="password"
+          placeholder="wachtwoord..." 
+          required
+        >
+        <button type="submit" class="login-btn">
+          Login
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="inlogcss">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welkom</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="logo">
+        <img src="Voedselbank logo.png" alt="Logo">
+      </div>
+
+      <h1>Welkom</h1>
+
+      <form class="login-form">
+        <input 
+          type="email" 
+          class="input-field" 
+          placeholder="email..." 
+          required
+        >
+        <input 
+          type="password" 
+          class="input-field" 
+          placeholder="wachtwoord..." 
+          required
+        >
+        <button type="submit" class="login-btn">
+          Login
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
