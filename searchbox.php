@@ -8,28 +8,6 @@
     <link rel="stylesheet" href="toevoegenknop.css">
 </head>
 <body>
-    <?php
-    
-    $connection = mysqli_connect("localhost", "root", "", "voedselbankdb");
-
-    if (!$connection) {
-        die("Verbinding met database mislukt: " . mysqli_connect_error());
-    }
-
-   
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $naam = mysqli_real_escape_string($connection, $_POST['naam']);
-        $houdbaarheidsdatum = mysqli_real_escape_string($connection, $_POST['houdbaarheidsdatum']);
-        $categorie_id = intval($_POST['categorie_id']);
-        $aantal = intval($_POST['aantal']);
-
-        $query = "INSERT INTO producten (naam, houdbaarheidsdatum, categorie_id, aantal) 
-                  VALUES ('$naam', '$houdbaarheidsdatum', $categorie_id, $aantal)";
-        
-        mysqli_query($connection, $query); 
-    }
-    ?>
-
     <nav class="navbar">
         <ul class="nav-list">
             <div class="image"></div>
@@ -45,12 +23,15 @@
                     <a href="vpakket">Voedsel pakketten</a>
                 </div>
             </div>
-            <li><a href="contact">Contact</a></li>
-            <div class="button">
-                <button href="inlog.html" class="background-3"><span class="login">Login</span></button>
+          </div>
+          <li><a href="contact.html">Contact</a></li>
+          <div class="button">
+              <button href="inlog2.php" class="background-3"><span class="login">Login</span></button>
             </div>
-        </ul>
-    </nav>
+              </div>
+          </li>
+      </ul>
+  </nav>
 
     <div class="container mt-5">
         <form method="get">
