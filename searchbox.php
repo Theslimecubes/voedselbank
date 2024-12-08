@@ -6,10 +6,30 @@
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
     <link rel="stylesheet" href="toevoegenknop.css">
-        
-        
 </head>
 <body>
+    <?php
+    
+    $connection = mysqli_connect("localhost", "root", "", "voedselbankdb");
+
+    if (!$connection) {
+        die("Verbinding met database mislukt: " . mysqli_connect_error());
+    }
+
+   
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $naam = mysqli_real_escape_string($connection, $_POST['naam']);
+        $houdbaarheidsdatum = mysqli_real_escape_string($connection, $_POST['houdbaarheidsdatum']);
+        $categorie_id = intval($_POST['categorie_id']);
+        $aantal = intval($_POST['aantal']);
+
+        $query = "INSERT INTO producten (naam, houdbaarheidsdatum, categorie_id, aantal) 
+                  VALUES ('$naam', '$houdbaarheidsdatum', $categorie_id, $aantal)";
+        
+        mysqli_query($connection, $query); 
+    }
+    ?>
+
     <nav class="navbar">
         <ul class="nav-list">
             <div class="image"></div>
@@ -49,23 +69,21 @@
         <table>
             <thead>
                 <tr>
-                    <th>Ean</th>
                     <th>Naam</th>
-                    <th>Categorie ID</th>
+                    <th>Categorie</th>
                     <th>Houdsbaarheid datum</th>
                     <th>Aantal</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
+               
+                $query = "SELECT p.*, c.naam AS categorie_naam FROM producten p 
+                          LEFT JOIN categorie c ON p.categorie_id = c.id";
                 
-                $connection = mysqli_connect("localhost", "root", "", "voedselbankdb");
-
-                
-                $query = "SELECT * FROM producten";
                 if (isset($_GET['search']) && $_GET['search'] != '') {
                     $filtervalue = mysqli_real_escape_string($connection, $_GET['search']);
-                    $query .= " WHERE CONCAT(id, naam, beschrijving, houdbaarheidsdatum, categorie_id) LIKE '%$filtervalue%'";
+                    $query .= " WHERE CONCAT(p.naam, p.houdbaarheidsdatum, c.naam) LIKE '%$filtervalue%'";
                 }
 
                 $result = mysqli_query($connection, $query);
@@ -73,38 +91,44 @@
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>
-                                <td>" . htmlspecialchars($row['id']) . "</td>
                                 <td>" . htmlspecialchars($row['naam']) . "</td>
-                                <td>" . htmlspecialchars($row['categorie_id']) . "</td>
+                                <td>" . htmlspecialchars($row['categorie_naam']) . "</td>
                                 <td>" . htmlspecialchars($row['houdbaarheidsdatum']) . "</td>
                                 <td>" . (isset($row['aantal']) ? htmlspecialchars($row['aantal']) : 'Niet beschikbaar') . "</td>
                               </tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='5'>Geen data gevonden...</td></tr>";
+                    echo "<tr><td colspan='4'>Geen data gevonden...</td></tr>";
                 }
                 ?>
             </tbody>
         </table>
     </div>
 
-   
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
             <h2>Product Toevoegen</h2>
-            <form method="post" action="toevoegen.php">
+            <form method="post" action="searchbox.php">
                 <label for="naam">Naam:</label>
                 <input type="text" name="naam" id="naam" required><br><br>
-
-                <label for="beschrijving">Beschrijving:</label>
-                <input type="text" name="beschrijving" id="beschrijving" required><br><br>
 
                 <label for="houdbaarheidsdatum">Houdbaarheidsdatum:</label>
                 <input type="date" name="houdbaarheidsdatum" id="houdbaarheidsdatum" required><br><br>
 
-                <label for="categorie_id">Categorie ID:</label>
-                <input type="number" name="categorie_id" id="categorie_id" required><br><br>
+                <label for="categorie_id">Categorie:</label>
+                <select name="categorie_id" id="categorie_id" required>
+                    <option value="">-- Selecteer een categorie --</option>
+                    <?php
+                    
+                    $categorie_query = "SELECT id, naam FROM categorie";
+                    $categorie_result = mysqli_query($connection, $categorie_query);
+
+                    while ($categorie = mysqli_fetch_assoc($categorie_result)) {
+                        echo '<option value="' . htmlspecialchars($categorie['id']) . '">' . htmlspecialchars($categorie['naam']) . '</option>';
+                    }
+                    ?>
+                </select><br><br>
 
                 <label for="aantal">Aantal:</label>
                 <input type="number" name="aantal" id="aantal" required><br><br>
@@ -113,5 +137,8 @@
             </form>
         </div>
     </div>
+
+    <?php mysqli_close($connection); ?>
 </body>
 </html>
+
