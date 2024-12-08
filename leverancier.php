@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VoedselBank</title>
     <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="toevoegenknop.css">
+    <link rel="stylesheet" href="producten.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
     
   </head>
@@ -18,10 +20,10 @@
             <button class="dropbtn">Overzicht</button>
             <div class="dropdown-content">
               <a href="searchbox.php">Producten</a>
-              <a href="gebruikers.html">Gebruikers</a>
-              <a href="gezinnen.html">Gezinnen</a>
-              <a href="leverancier.html">Leverancieren</a>
-              <a href="voedselpakket.html">Voedsel pakketten</a>
+              <a href="gebruikers.php">Gebruikers</a>
+              <a href="gezinnen.php">Gezinnen</a>
+              <a href="leverancier.php">Leverancieren</a>
+              <a href="voedselpakket.php">Voedsel pakketten</a>
             </div>
           </div>
           <li><a href="contact.html">Contact</a></li>
