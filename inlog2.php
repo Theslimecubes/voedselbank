@@ -57,8 +57,6 @@ if(isset($_POST['login_button'])){
       header('location:home.html');
 
     }else{ 
-    echo?> '<script>alert("Login unseccesfull.")</script>'; 
-    <?php
 
 
     }
