@@ -1,44 +1,21 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 20px;
-}
-
-h2 {
-    text-align: center;
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
 table {
-    width: 120%; 
+    width: 100%;
     margin: 0 auto;
     border-collapse: collapse;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
 th {
-    background-color: #fd5800; 
+    background-color: #fd5800; /* Oranje kop */
     color: white;
     padding: 15px;
     text-transform: uppercase;
     font-size: 14px;
     letter-spacing: 1px;
     text-align: left;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2; 
-}
-
-tr:hover {
-    background-color: #e0f7fa; 
-    transition: background-color 0.3s ease;
 }
 
 td {
@@ -49,29 +26,16 @@ td {
     border-bottom: 1px solid #ddd;
 }
 
-table td, table th {
-    transition: background-color 0.3s ease, color 0.3s ease;
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Lichte grijze achtergrond voor even rijen */
 }
 
-
-@media (max-width: 768px) {
-    table {
-        width: 150%; 
-    }
-
-    th, td {
-        padding: 8px; 
-        font-size: 13px;
-    }
+tr:hover {
+    background-color: #ffe0b2; /* Oranje-achtige tint bij hover */
+    transition: background-color 0.3s ease;
 }
 
-
-@media (max-width: 480px) {
-    th, td {
-        font-size: 12px; 
-    }
-}
-
+/* Toevoegen-knop container */
 .knop-container {
     display: flex; 
     justify-content: flex-end; 
@@ -81,7 +45,7 @@ table td, table th {
 .toevoegen-knop {
     display: inline-flex;
     align-items: center;
-    background-color: #fd5800; 
+    background-color: #fd5800; /* Oranje achtergrondkleur */
     color: white;
     border: none;
     border-radius: 5px;
@@ -89,7 +53,7 @@ table td, table th {
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -107,7 +71,7 @@ table td, table th {
 }
 
 .toevoegen-knop:hover {
-    background-color: #e65100; 
+    background-color: #e65100; /* Donkerdere oranje tint bij hover */
     transform: translateY(-2px); 
 }
 

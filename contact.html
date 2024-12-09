@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VoedselBank</title>
+    <link rel="stylesheet" href="contact.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="nav-list">
+          <div class="image"></div>
+          <li><a class="voedselbank-maas">Voedselbank Maaskantje</a></li>
+          <li><a href="home.html">Home</a></li>
+          <div class="dropdown">
+            <button class="dropbtn">Overzicht</button>
+            <div class="dropdown-content">
+              <a href="searchbox.php">Producten</a>
+              <a href="gebruikers.php">Gebruikers</a>
+              <a href="gezinnen.php">Gezinnen</a>
+              <a href="leverancier.php">Leverancieren</a>
+              <a href="voedselpakket.php">Voedsel pakketten</a>
+            </div>
+          </div>
+          <li><a href="contact.html">Contact</a></li>
+          <div class="button">
+              <button href="inlog2.php" class="background-3"><span class="login">Login</span></button>
+            </div>
+              </div>
+          </li>
+      </ul>
+  </nav>
+    <div class="main-container">
+        <div class="form-row">
+          <label class="form-label" for="firstname">Voornaam *</label>
+          <label class="form-label" for="lastname">Achternaam *</label>
+        </div>
+        <div class="form-row">
+          <input class="form-input" type="text" id="firstname" name="firstname" required>
+          <input class="form-input" type="text" id="lastname" name="lastname" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="email">Email*</label>
+          <label class="form-label" for="phone">Telefoon*</label>
+        </div>
+        <div class="form-row">
+          <input class="form-input" type="email" id="email" name="email" required>
+          <input class="form-input" type="tel" id="phone" name="phone" required>
+        </div>
+        <label class="form-label" for="message">Bericht</label>
+        <textarea class="form-textarea" id="message" name="message"></textarea>
+        <button class="submit-button" type="submit">Versturen</button>
+        <div class="contact-phone">
+          <span class="phone-number">+31615907292</span>
+          <span class="contact-email">info.vbankmaaskantje.nl</span>
+        </div>
+        <p class="contact-hours">Telefonisch bereikbaar<br>ma t/m vr: 09:00 - 15:00</p>
+    </div>
+  </body>
+</html>

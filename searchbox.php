@@ -1,99 +1,125 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>Producten overzicht</title>
+    <title>Producten overzicht</title>
+    <link rel="stylesheet" href="producten.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+    <link rel="stylesheet" href="toevoegenknop.css">
 </head>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
-<link rel="stylesheet" href="producten.css">
 <body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <div class="image"></div>
+            <li><a class="voedselbank-maas">Voedselbank Maaskantje</a></li>
+            <li><a href="home.html">Home</a></li>
+            <div class="dropdown">
+                <button class="dropbtn">Overzicht</button>
+                <div class="dropdown-content">
+                    <a href="searchbox.php">Producten</a>
+                    <a href="gebruikers">Gebruikers</a>
+                    <a href="gezinnen">Gezinnen</a>
+                    <a href="leverancieren">Leveranciers</a>
+                    <a href="vpakket">Voedsel pakketten</a>
+                </div>
+            </div>
+          </div>
+          <li><a href="contact.html">Contact</a></li>
+          <div class="button">
+              <button href="inlog2.php" class="background-3"><span class="login">Login</span></button>
+            </div>
+              </div>
+          </li>
+      </ul>
+  </nav>
 
-   
-    
-    
+    <div class="container mt-5">
+        <form method="get">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="search" placeholder="Zoek hier..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
+                <button type="submit" class="btn btn-primary">Zoeken</button>
+            </div>
+        </form>
 
+        <div class="knop-container">
+            <button class="toevoegen-knop" onclick="document.getElementById('modal').style.display='block'">
+                <span class="icon">+</span> Toevoegen
+            </button>
+        </div>
 
+        <table>
+            <thead>
+                <tr>
+                    <th>Naam</th>
+                    <th>Categorie</th>
+                    <th>Houdsbaarheid datum</th>
+                    <th>Aantal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+               
+                $query = "SELECT p.*, c.naam AS categorie_naam FROM producten p 
+                          LEFT JOIN categorie c ON p.categorie_id = c.id";
+                
+                if (isset($_GET['search']) && $_GET['search'] != '') {
+                    $filtervalue = mysqli_real_escape_string($connection, $_GET['search']);
+                    $query .= " WHERE CONCAT(p.naam, p.houdbaarheidsdatum, c.naam) LIKE '%$filtervalue%'";
+                }
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-        
-        
-        <form actions="">
-        <div class="input-group mb-3">
+                $result = mysqli_query($connection, $query);
 
-        <input type="text" class="form-control" value=""<?php if(isset($_GET['search'])){echo $_GET['search'];} ?> name="search" placeholder="search here. . .">
- 
-        <button type="submit" class="btn btn-primary">Zoeken</button>
-   
-         </div>
-         </form>
-      </div>
-
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            <h4 class="text-center"></h4>
-            <div class="card-body">
-
-            <div class="knop-container">
-        <button class="toevoegen-knop">
-            <span class="icon">+</span> Toevoegen
-        </button>
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>
+                                <td>" . htmlspecialchars($row['naam']) . "</td>
+                                <td>" . htmlspecialchars($row['categorie_naam']) . "</td>
+                                <td>" . htmlspecialchars($row['houdbaarheidsdatum']) . "</td>
+                                <td>" . (isset($row['aantal']) ? htmlspecialchars($row['aantal']) : 'Niet beschikbaar') . "</td>
+                              </tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='4'>Geen data gevonden...</td></tr>";
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Ean</th>
-                <th>Naam</th>
-                <th>Categorie ID</th>
-                <th>Houdsbaarheid datum</th>
-                <th>Aantal</th>
-            </tr>
-        </thead>
-        <tbody id="">
-          <?php 
-          
-          if(isset($_GET['search']))
-          {
-            $connection = mysqli_connect("localhost", "root", "", "voedselbankdb");
-            $filtervalue = $_GET['search'];
-            $filterdata = "SELECT * FROM producten WHERE CONCAT(id, naam, beschrijving, houdbaarheidsdatum, categorie_id) LIKE '%$filtervalue%'";
-            $filterdata_run = mysqli_query($connection, $filterdata);
 
-            if(mysqli_num_rows($filterdata_run) > 0)
-            {
-foreach($filterdata_run as $row)
-{
-  ?>
-  <tr>
-    <td><?php echo $row['id']; ?></td>
-    <td><?php echo $row['naam']; ?></td>
-    <td><?php echo $row['beschrijving']; ?></td>
-    <td><?php echo $row['houdbaarheidsdatum']; ?></td>
-    <td><?php echo $row['categorie_id']; ?></td>
-  </tr>
-  <?php
-}
-            }
-            else
-            {
-?>
-<tr>
-  <td colspan="4">Geen data gevonden...</td>
-</tr>
-<?php
-             }
-          }
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
+            <h2>Product Toevoegen</h2>
+            <form method="post" action="searchbox.php">
+                <label for="naam">Naam:</label>
+                <input type="text" name="naam" id="naam" required><br><br>
 
-          ?>
-            <!-- Event data wordt hier geladen -->
-        </tbody>
-    </table>
-</div>
-</div>
+                <label for="houdbaarheidsdatum">Houdbaarheidsdatum:</label>
+                <input type="date" name="houdbaarheidsdatum" id="houdbaarheidsdatum" required><br><br>
 
-        </body>
+                <label for="categorie_id">Categorie:</label>
+                <select name="categorie_id" id="categorie_id" required>
+                    <option value="">-- Selecteer een categorie --</option>
+                    <?php
+                    
+                    $categorie_query = "SELECT id, naam FROM categorie";
+                    $categorie_result = mysqli_query($connection, $categorie_query);
+
+                    while ($categorie = mysqli_fetch_assoc($categorie_result)) {
+                        echo '<option value="' . htmlspecialchars($categorie['id']) . '">' . htmlspecialchars($categorie['naam']) . '</option>';
+                    }
+                    ?>
+                </select><br><br>
+
+                <label for="aantal">Aantal:</label>
+                <input type="number" name="aantal" id="aantal" required><br><br>
+
+                <button type="submit" class="btn btn-success">Opslaan</button>
+            </form>
+        </div>
+    </div>
+
+    <?php mysqli_close($connection); ?>
+</body>
 </html>
+
