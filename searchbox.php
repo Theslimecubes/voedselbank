@@ -17,10 +17,10 @@
                 <button class="dropbtn">Overzicht</button>
                 <div class="dropdown-content">
                     <a href="searchbox.php">Producten</a>
-                    <a href="gebruikers">Gebruikers</a>
-                    <a href="gezinnen">Gezinnen</a>
-                    <a href="leverancieren">Leveranciers</a>
-                    <a href="vpakket">Voedsel pakketten</a>
+                    <a href="gebruikers.php">Gebruikers</a>
+                    <a href="gezinnen.php">Gezinnen</a>
+                    <a href="leverancieren.php">Leveranciers</a>
+                    <a href="voedselpakket.php">Voedsel pakketten</a>
                 </div>
             </div>
           </div>
