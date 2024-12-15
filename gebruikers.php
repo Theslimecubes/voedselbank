@@ -72,7 +72,7 @@
                                 <td>" . htmlspecialchars($row['naam']) . "</td>
                                 <td>" . htmlspecialchars($row['email']) . "</td>
                                 <td>" . htmlspecialchars($row['password']) . "</td>
-                                <td>" . (isset($row['functie']) ? htmlspecialchars($row['functie']) : 'Geen Functie') . "</td>
+                                <td>" . htmlspecialchars($row['functie']) . "</td>
                               </tr>";
                     }
                 } else {
