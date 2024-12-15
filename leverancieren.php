@@ -40,8 +40,8 @@
                     <a href="searchbox.php">Producten</a>
                     <a href="gebruikers">Gebruikers</a>
                     <a href="gezinnen">Gezinnen</a>
-                    <a href="leveranciers.php">Leveranciers</a>
-                    <a href="vpakket">Voedsel pakketten</a>
+                    <a href="leverancieren.php">Leveranciers</a>
+                    <a href="voedselpakket.php">Voedsel pakketten</a>
                 </div>
             </div>
             <li><a href="contact">Contact</a></li>
