@@ -73,7 +73,7 @@
                                 <td>" . htmlspecialchars($row['naam']) . "</td>
                                 <td>" . htmlspecialchars($row['email']) . "</td>
                                 <td>" . htmlspecialchars($row['password']) . "</td>
-                                <td>" . (isset($row['functie']) ? htmlspecialchars($row['functie']) : 'Geen Functie') . "</td>
+                                <td>" . htmlspecialchars($row['functie']) . "</td>
                               </tr>";
                     }
                 } else {
@@ -88,7 +88,7 @@
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
             <h2>Gebruiker Toevoegen</h2>
-            <form method="post" action="searchbox.php">
+            <form method="post" action="gebruikertoevoegen.php">
                 <label for="naam">Naam:</label>
                 <input type="text" name="naam" id="naam" required><br><br>
 
