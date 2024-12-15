@@ -21,7 +21,7 @@
               <a href="searchbox.php">Producten</a>
               <a href="gebruikers.php">Gebruikers</a>
               <a href="/Gezinnen pagina/gezinnen.php">Gezinnen</a>
-              <a href="leverancier.php">Leverancieren</a>
+              <a href="leverancieren.php">Leverancieren</a>
               <a href="voedselpakket.php">Voedsel pakketten</a>
             </div>
           </div>

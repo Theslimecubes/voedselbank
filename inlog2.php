@@ -49,7 +49,7 @@ $conn = mysqli_connect("localhost", "root","","voedselbankdb");
 if(isset($_POST['login_button'])){
   $email=$_POST['email'];
   $password=$_POST['password'];
-  $sql= "SELECT * FROM logindetails WHERE email = '$email'";
+  $sql= "SELECT * FROM voedselbankdb, logindetails WHERE email = '$email'";
   $result = mysqli_query($conn,$sql);
   while($row = mysqli_fetch_assoc($result)){
     $resultPassword = $row['password'];
