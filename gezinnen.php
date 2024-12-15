@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
-    <link rel="stylesheet" href="gezinnen.css">
-    <link rel="stylesheet" href="toevoegenknop.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gebruikers</title>
     <link rel="stylesheet" href="producten.css">
+    <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+    <link rel="stylesheet" href="toevoegenknop.css">
 </head>
 <body>
+
+<?php
+    
+    $connection = mysqli_connect("localhost", "root", "", "voedselbankdb");
+
+    if (!$connection) {
+        die("Verbinding met database mislukt: " . mysqli_connect_error());
+    }
+
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $naam = mysqli_real_escape_string($connection, $_POST['naam']);
+        $email = mysqli_real_escape_string($connection, $_POST['email']);
+        $password = mysqli_real_escape_string($connection, $_POST['password']);
+        $functie = intval($_POST['functie']);
+
+        $query = "INSERT INTO gebruikers (naam, email, password, functie) 
+                  VALUES ('$naam', '$email', $password, $functie)";
+        
+        mysqli_query($connection, $query); 
+    }
+    ?>
+
+
     <nav class="navbar">
       <ul class="nav-list">
           <div class="image"></div>
@@ -20,7 +44,7 @@
             <div class="dropdown-content">
               <a href="searchbox.php">Producten</a>
               <a href="gebruikers.php">Gebruikers</a>
-              <a href="/Gezinnen pagina/gezinnen.php">Gezinnen</a>
+              <a href="gezinnen.php">Gezinnen</a>
               <a href="leverancieren.php">Leverancieren</a>
               <a href="voedselpakket.php">Voedsel pakketten</a>
             </div>
@@ -33,5 +57,91 @@
           </li>
       </ul>
   </nav>
+
+    <div class="container mt-5">
+        <form method="get">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="search" placeholder="Zoek hier..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
+                <button type="submit" class="btn btn-primary">Zoeken</button>
+            </div>
+        </form>
+
+        <div class="knop-container">
+            <button class="toevoegen-knop" onclick="document.getElementById('modal').style.display='block'">
+                <span class="icon">+</span> Toevoegen
+            </button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Postcode</th>
+                    <th>Achternaam</th>
+                    <th>Adres</th>
+                    <th>Volwassenen</th>
+                    <th>Kinderen</th>
+                    <th>Babies</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+
+                $query = "SELECT g.*, g.naam AS naam FROM gebruikers g";
+
+                
+                if (isset($_GET['search']) && $_GET['search'] != '') {
+                    $filtervalue = mysqli_real_escape_string($connection, $_GET['search']);
+                }
+
+                $result = mysqli_query($connection, $query);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>
+                                <td>" . htmlspecialchars($row['postcode']) . "</td>
+                                <td>" . htmlspecialchars($row['achternaam']) . "</td>
+                                <td>" . htmlspecialchars($row['adres']) . "</td>
+                                <td>" . htmlspecialchars($row['volwassenen']) . "</td>
+                                <td>" . htmlspecialchars($row['kinderen']) . "</td>
+                                <td>" . htmlspecialchars($row['babies']) . "</td>
+                              </tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='4'>Geen data gevonden...</td></tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
+            <h2>Gezinnen Toevoegen</h2>
+            <form method="post" action="gezinnentoevoegen.php">
+                <label for="postcode">Postcode:</label>
+                <input type="text" name="postcode" id="postcode" required><br><br>
+
+                <label for="achternaam">Achternaam:</label>
+                <input type="text" name="achternaam" id="achternaam" required><br><br>
+
+                <label for="adres">Adres:</label>
+                <input type="text" name="adres" id="adres" required><br><br>
+
+                <label for="volwassenen">Volwassenen:</label>
+                <input type="number" name="volwassenen" id="volwassenen" required><br><br>
+
+                <label for="kinderen">Kinderen:</label>
+                <input type="number" name="kinderen" id="kinderen" required><br><br>
+
+                <label for="babies">Babies:</label>
+                <input type="number" name="babies" id="babies" required><br><br>
+
+                <button type="submit" class="btn btn-success">Opslaan</button>
+            </form>
+        </div>
+    </div>
+
+    <?php mysqli_close($connection); ?>
 </body>
 </html>
