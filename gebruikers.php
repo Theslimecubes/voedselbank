@@ -10,6 +10,30 @@
     <link rel="stylesheet" href="toevoegenknop.css">
 </head>
 <body>
+
+<?php
+    
+    $connection = mysqli_connect("localhost", "root", "", "voedselbankdb");
+
+    if (!$connection) {
+        die("Verbinding met database mislukt: " . mysqli_connect_error());
+    }
+
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $naam = mysqli_real_escape_string($connection, $_POST['naam']);
+        $email = mysqli_real_escape_string($connection, $_POST['email']);
+        $password = mysqli_real_escape_string($connection, $_POST['password']);
+        $functie = intval($_POST['functie']);
+
+        $query = "INSERT INTO gebruikers (naam, email, password, functie) 
+                  VALUES ('$naam', '$email', $password, $functie)";
+        
+        mysqli_query($connection, $query); 
+    }
+    ?>
+
+
     <nav class="navbar">
       <ul class="nav-list">
           <div class="image"></div>
