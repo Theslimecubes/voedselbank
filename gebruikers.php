@@ -111,7 +111,7 @@
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
             <h2>Gebruiker Toevoegen</h2>
-            <form method="post" action="gebruikertoevoegen.php">
+            <form method="post" action="gebruikers.php">
                 <label for="naam">Naam:</label>
                 <input type="text" name="naam" id="naam" required><br><br>
 
