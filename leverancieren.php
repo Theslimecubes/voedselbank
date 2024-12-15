@@ -85,12 +85,12 @@ if (isset($_GET['search']) && $_GET['search'] != '') {
     $query .= " WHERE CONCAT(naam, contactpersoon, telefoon) LIKE '%$filtervalue%'";
 }
 
-// Voer query uit en vang fouten op
+
 $result = mysqli_query($connection, $query);
 
-// Controleer of de query is gelukt
+
 if (!$result) {
-    die("Query mislukt: " . mysqli_error($connection)); // Debugging: Toon de SQL-fout
+    die("Query mislukt: " . mysqli_error($connection)); 
 }
 
 if (mysqli_num_rows($result) > 0) {
