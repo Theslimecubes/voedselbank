@@ -83,12 +83,15 @@
             </thead>
             <tbody>
                 <?php
+
+                $query = "SELECT g.*, g.naam AS naam FROM gebruikers g";
+
                 
                 if (isset($_GET['search']) && $_GET['search'] != '') {
                     $filtervalue = mysqli_real_escape_string($connection, $_GET['search']);
                 }
 
-                $result = mysqli_query($connection);
+                $result = mysqli_query($connection, $query);
 
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
