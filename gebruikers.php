@@ -11,19 +11,18 @@
 </head>
 <body>
     <nav class="navbar">
-        <ul class="nav-list">
-            <div class="image"></div>
-            <li><a class="voedselbank-maas">Voedselbank Maaskantje</a></li>
-            <li><a href="home.html">Home</a></li>
-            <div class="dropdown">
-                <button class="dropbtn">Overzicht</button>
-                <div class="dropdown-content">
-                    <a href="searchbox.php">Producten</a>
-                    <a href="gebruikers.php">Gebruikers</a>
-                    <a href="gezinnen.php">Gezinnen</a>
-                    <a href="leverancieren.php">Leveranciers</a>
-                    <a href="voedselpakket.php">Voedsel pakketten</a>
-                </div>
+      <ul class="nav-list">
+          <div class="image"></div>
+          <li><a class="voedselbank-maas">Voedselbank Maaskantje</a></li>
+          <li><a href="home.html">Home</a></li>
+          <div class="dropdown">
+            <button class="dropbtn">Overzicht</button>
+            <div class="dropdown-content">
+              <a href="searchbox.php">Producten</a>
+              <a href="gebruikers.php">Gebruikers</a>
+              <a href="gezinnen.php">Gezinnen</a>
+              <a href="leverancieren.php">Leverancieren</a>
+              <a href="voedselpakket.php">Voedsel pakketten</a>
             </div>
           </div>
           <li><a href="contact.html">Contact</a></li>

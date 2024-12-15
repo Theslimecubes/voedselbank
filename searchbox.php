@@ -8,6 +8,28 @@
     <link rel="stylesheet" href="toevoegenknop.css">
 </head>
 <body>
+    <?php
+    
+    $connection = mysqli_connect("localhost", "root", "", "voedselbankdb");
+
+    if (!$connection) {
+        die("Verbinding met database mislukt: " . mysqli_connect_error());
+    }
+
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $naam = mysqli_real_escape_string($connection, $_POST['naam']);
+        $houdbaarheidsdatum = mysqli_real_escape_string($connection, $_POST['houdbaarheidsdatum']);
+        $categorie_id = intval($_POST['categorie_id']);
+        $aantal = intval($_POST['aantal']);
+
+        $query = "INSERT INTO producten (naam, houdbaarheidsdatum, categorie_id, aantal) 
+                  VALUES ('$naam', '$houdbaarheidsdatum', $categorie_id, $aantal)";
+        
+        mysqli_query($connection, $query); 
+    }
+    ?>
+
     <nav class="navbar">
         <ul class="nav-list">
             <div class="image"></div>
@@ -23,15 +45,12 @@
                     <a href="voedselpakket.php">Voedsel pakketten</a>
                 </div>
             </div>
-          </div>
-          <li><a href="contact.html">Contact</a></li>
-          <div class="button">
-              <button href="inlog2.php" class="background-3"><span class="login">Login</span></button>
+            <li><a href="contact">Contact</a></li>
+            <div class="button">
+                <button href="inlog.html" class="background-3"><span class="login">Login</span></button>
             </div>
-              </div>
-          </li>
-      </ul>
-  </nav>
+        </ul>
+    </nav>
 
     <div class="container mt-5">
         <form method="get">
@@ -58,7 +77,7 @@
             </thead>
             <tbody>
                 <?php
-               
+                
                 $query = "SELECT p.*, c.naam AS categorie_naam FROM producten p 
                           LEFT JOIN categorie c ON p.categorie_id = c.id";
                 
@@ -89,7 +108,7 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
-            <h2>Product Toevoegen</h2>
+            <h2>Leverancier toevoegen</h2>
             <form method="post" action="searchbox.php">
                 <label for="naam">Naam:</label>
                 <input type="text" name="naam" id="naam" required><br><br>
@@ -122,4 +141,5 @@
     <?php mysqli_close($connection); ?>
 </body>
 </html>
+
 
