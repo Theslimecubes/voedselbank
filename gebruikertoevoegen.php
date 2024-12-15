@@ -7,21 +7,32 @@ if (!$connection) {
 }
 
 
-$naam = mysqli_real_escape_string($connection, $_POST['naam']);
-$email = mysqli_real_escape_string($connection, $_POST['email']);
-$password = mysqli_real_escape_string($connection, $_POST['password']);
-$funtcie = intval($_POST['functie']);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    $gebruikersnaam = mysqli_real_escape_string($connection, $_POST['gebruikersnaam']);
+    $email = mysqli_real_escape_string($connection, $_POST['email']);
+    $wachtwoord= mysqli_real_escape_string($connection, $_POST['wachtwoord']);
+    $functie = intval($_POST['functie'])
 
+    if (empty($gebruikersnaam) || empty($email) || empty($wachtwoord) || empty($functie)) {
+        echo "Alle velden moeten ingevuld zijn.";
+    } else {
+        
+        $query = "INSERT INTO gebruikers (gebruikersnaam, email, wachtwoord, functie) 
+                  VALUES ('$gebruikersnaam', '$email', '$wachtwoord', '$functie')";
 
-$query = "INSERT INTO gebruikers (naam, email, password, functie) VALUES ('$naam', '$email', '$password', $functie)";
-
-if (mysqli_query($connection, $query)) {
-    echo "Gebruiker succesvol toegevoegd.";
-    header("Location: gebruikers.php");
-    exit();
-} else {
-    echo "Fout bij toevoegen: " . mysqli_error($connection);
+       
+        if (mysqli_query($connection, $query)) {
+            
+            echo "Data succesvol toegevoegd!";
+        } else {
+            
+            echo "Fout bij toevoegen: " . mysqli_error($connection);
+        }
+    }
 }
+
 
 mysqli_close($connection);
 ?>
+
