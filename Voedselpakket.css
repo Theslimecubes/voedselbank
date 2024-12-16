@@ -28,7 +28,7 @@
   
   .tableWrapper table {
     outline: 1px solid var(--color-grey);
-    margin: 1px; /* this is to avoid a glitch with the outline when mobile */
+    margin: 1px; 
     width: calc(100% - 2px);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -36,12 +36,12 @@
     border-collapse: collapse;
   }
   
-  /* add padding to every item (includes header) */
+  
   .tableWrapper table > * > * > * {
     padding: var(--size-sm);
   }
   
-  /* add a line between every item */
+
   .tableWrapper table > * > *:not(:last-child) {
     border-bottom: 1px solid var(--color-grey);
   }
@@ -58,7 +58,7 @@
     font-size: large;
   }
   
-  /* for taking minimum space */
+
   .tableWrapper td.min {
     width: 1%;
     white-space: nowrap;
