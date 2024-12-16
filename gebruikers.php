@@ -97,16 +97,12 @@ if (!$result) {
 
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>
                 
-                <td>" . htmlspecialchars($row['gebruikersnaam']) . "</td>
-                <td>" . htmlspecialchars($row['email']) . "</td>
-                <td>" . htmlspecialchars($row['wachtwoord']) . "</td>
-                <td>" . htmlspecialchars($row['functie']) . "</td>"
-                ?>
-                <td>"<a href="gebruikerverwijderen.php?delete=<?php echo $data['id']; ?>" class="button">Delete</a>"</td>
-                <?php
-                "</tr>";
+                echo"<td>" . htmlspecialchars($row['gebruikersnaam']) . "</td>";
+                echo"<td>" . htmlspecialchars($row['email']) . "</td>";
+                echo"<td>" . htmlspecialchars($row['wachtwoord']) . "</td>";
+                echo"<td>" . htmlspecialchars($row['functie']) . "</td>";     
+                echo "<td><a href='gebruikerverwijderen.php?id=".$row['id']."'></a></td>";
     }
 } else {
     echo "<tr><td colspan='5'>Geen data gevonden...</td></tr>";
