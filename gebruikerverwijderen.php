@@ -1,13 +1,13 @@
 <?php
 
-$id = $_GET['id'];
+$gebruikersnaam = $_GET['gebruikersnaam'];
 $connection = mysqli_connect("localhost", "root", "", "voedselbankdb");
 
 if (!$connection) {
     die("Verbinding met database mislukt: " . mysqli_connect_error());
 }
 
-$sql = "DELETE FROM gebruikers WHERE id = $id"; 
+$sql = "DELETE FROM gebruikers WHERE gebruikersnaam = $gebruikersnaam"; 
 
 if (mysqli_query($connection, $sql)) {
     mysqli_close($connection);
@@ -36,8 +36,8 @@ if (!$connection) {
 
 if(isset($_GET['delete']))
 {
-  $id= validate($_GET['delete']);
-  $condition =['id'=>$id];
+  $gebruikersnaam= valgebruikersnaamate($_GET['delete']);
+  $condition =['gebruikersnaam'=>$gebruikersnaam];
   $deleteMsg=delete_data($connection, $tableName, $condition);
   header("location:form.php");
 }
@@ -58,7 +58,7 @@ function delete_data($connection, $tableName, $condition){
   }
   return $msg;
 }
-function validate($value) {
+function valgebruikersnaamate($value) {
 $value = trim($value);
 $value = stripslashes($value);
 $value = htmlspecialchars($value);
