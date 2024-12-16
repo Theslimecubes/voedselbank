@@ -74,7 +74,6 @@
                     <th>Wachtwoord</th>
                     <th>Functie</th>
                     <th>Delete</th>
-                    <th><td><a href="form.php?delete=<?php echo $data['id']; ?>" class="button">Delete</a></td></th>
                     
                 </tr>
             </thead>
