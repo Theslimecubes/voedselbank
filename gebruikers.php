@@ -73,6 +73,7 @@
                     <th>Email</th>
                     <th>Wachtwoord</th>
                     <th>Functie</th>
+                    <th><td><a href="form.php?delete=<?php echo $data['id']; ?>" class="button">Delete</a></td></th>
                     
                 </tr>
             </thead>
@@ -101,7 +102,8 @@ if (mysqli_num_rows($result) > 0) {
                 <td>" . htmlspecialchars($row['gebruikersnaam']) . "</td>
                 <td>" . htmlspecialchars($row['email']) . "</td>
                 <td>" . htmlspecialchars($row['wachtwoord']) . "</td>
-                <td>" . htmlspecialchars($row['functie']) . "</td> </tr>";
+                <td>" . htmlspecialchars($row['functie']) . "</td>
+                </tr>"
     }
 } else {
     echo "<tr><td colspan='5'>Geen data gevonden...</td></tr>";
