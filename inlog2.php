@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welkom</title>
-    <link rel="stylesheet" href="inlog.css">
-  </head>
-  <head>
     <link rel="stylesheet" type="text/css" href="inlog.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welkom</title>
     <link rel="stylesheet" href="inlog.css">
   </head>
-
   <body>
     <div class="login-container">
       <div class="logo">
