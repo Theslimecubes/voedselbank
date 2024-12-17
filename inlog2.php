@@ -14,7 +14,7 @@
 
       <h1>Welkom</h1>
 
-      <form class="login-form">
+      <form class="login-form" method= "POST">
         <input 
           type="email" 
           class="input-field" 
@@ -29,27 +29,25 @@
           name = "password"
           required
         >
-        <button type="submit" href="home.html" class="login-btn" name="login_button">
-          login
-        </button>
+        <button type="submit" class="login-btn" name="login_button">login</button>
       </form>
     </div>
   </body>
 </html>
 <?php 
-$conn = mysqli_connect("localhost", "root","");
+$conn = mysqli_connect("localhost", "root", "", "inlog-voedselbank");
 if(isset($_POST['login_button'])){
   $email=$_POST['email'];
   $password=$_POST['password'];
   $sql= "SELECT * FROM logindetails WHERE email = '$email'";
-  $result = mysqli_query($conn,$sql);
+  $result = mysqli_query($conn, $sql);
   while($row = mysqli_fetch_assoc($result)){
     $resultPassword = $row['password'];
     if($password == $resultPassword){
-      header('location:home.html');
-
+      header('location: http://localhost/voedselbank/voedselbank/home.html');
+      exit;
     }else{ 
-    echo "Login Unsuccessful";
+      echo "error";
     }
   }
 }
