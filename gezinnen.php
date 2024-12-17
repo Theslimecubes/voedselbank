@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gebruikers</title>
+    <title>Gezinnen</title>
     <link rel="stylesheet" href="producten.css">
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
@@ -21,13 +21,17 @@
 
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $naam = mysqli_real_escape_string($connection, $_POST['naam']);
-        $email = mysqli_real_escape_string($connection, $_POST['email']);
-        $password = mysqli_real_escape_string($connection, $_POST['password']);
-        $functie = intval($_POST['functie']);
+        $achternaam = mysqli_real_escape_string($connection, $_POST['achternaam']);
+        $postcode = mysqli_real_escape_string($connection, $_POST['postcode']);
+        $adres = mysqli_real_escape_string($connection, $_POST['adres']);
+        $volwassenen = mysqli_real_escape_string($connection, $_POST['volwassenen']);
+        $kinderen = mysqli_real_escape_string($connection, $_POST['kinderen']);
+        $babies = mysqli_real_escape_string($connection, $_POST['babies']);
+        $babies = mysqli_real_escape_string($connection, $_POST['allergenen']);
 
-        $query = "INSERT INTO gebruikers (naam, email, password, functie) 
-                  VALUES ('$naam', '$email', $password, $functie)";
+
+        $query = "INSERT INTO gezinnen (achternaam, postcode, adres, volwassenen, kinderen, babies, allergenen) 
+                  VALUES ('$achternaam', '$postcode', $adres, $volwassenen, $kinderen, $babies, $allergenen)";
         
         mysqli_query($connection, $query); 
     }
@@ -58,20 +62,19 @@
       </ul>
   </nav>
 
-    <div class="container mt-5">
-        <form method="get">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" name="search" placeholder="Zoek hier..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
-                <button type="submit" class="btn btn-primary">Zoeken</button>
-            </div>
-        </form>
-
-        <div class="knop-container">
-            <button class="toevoegen-knop" onclick="document.getElementById('modal').style.display='block'">
-                <span class="icon">+</span> Toevoegen
-            </button>
-        </div>
-
+  <div class="container mt-5">
+    <form method="get"> 
+        <div class="input-group mb-3"> 
+            <input type="text" class="form-control" name="search" placeholder="Zoek hier..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>"> 
+            <button type="submit" class="btn btn-primary">Zoeken</button> 
+        </div> 
+    </form> 
+    <div class="knop-container"> 
+        <button class="toevoegen-knop" onclick="document.getElementById('modal').style.display='block'"> 
+            <span class="icon">+</span> Toevoegen 
+        </button> 
+    </div>
+</div>
         <table>
             <thead>
                 <tr>
@@ -81,22 +84,29 @@
                     <th>Volwassenen</th>
                     <th>Kinderen</th>
                     <th>Babies</th>
+                    <th>Allergenen</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
 
-                $query = "SELECT g.*, g.naam AS naam FROM gebruikers g";
+$query = "SELECT achternaam, postcode, adres, volwassenen, kinderen, babies FROM gezinnen";
 
-                
-                if (isset($_GET['search']) && $_GET['search'] != '') {
-                    $filtervalue = mysqli_real_escape_string($connection, $_GET['search']);
-                }
+if (isset($_GET['search']) && $_GET['search'] != '') {
+    $filtervalue = mysqli_real_escape_string($connection, $_GET['search']);
+    $query .= " WHERE CONCAT(achternaam, postcode, adres, volwassenen, kinderen, babies) LIKE '%$filtervalue%'";
+}
 
-                $result = mysqli_query($connection, $query);
 
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
+$result = mysqli_query($connection, $query);
+
+
+if (!$result) {
+    die("Query mislukt: " . mysqli_error($connection)); 
+}
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>
                                 <td>" . htmlspecialchars($row['postcode']) . "</td>
                                 <td>" . htmlspecialchars($row['achternaam']) . "</td>
@@ -129,13 +139,17 @@
                 <input type="text" name="adres" id="adres" required><br><br>
 
                 <label for="volwassenen">Volwassenen:</label>
-                <input type="number" name="volwassenen" id="volwassenen" required><br><br>
+                <input type="number" name="volwassenen" id="volwassenen"><br><br>
 
                 <label for="kinderen">Kinderen:</label>
-                <input type="number" name="kinderen" id="kinderen" required><br><br>
+                <input type="number" name="kinderen" id="kinderen"><br><br>
 
                 <label for="babies">Babies:</label>
-                <input type="number" name="babies" id="babies" required><br><br>
+                <input type="number" name="babies" id="babies"><br><br>
+
+                <label for="allergenen">Allergenen:</label>
+                <input type="text" name="allergenen" id="allergenen"><br><br>
+
 
                 <button type="submit" class="btn btn-success">Opslaan</button>
             </form>
