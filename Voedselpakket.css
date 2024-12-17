@@ -1,75 +1,80 @@
-.header {
-    margin-block-end: var(--size-xl);
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .search {
-    display: flex;
-    gap: var(--size-lg);
-    margin-block-end: var(--size-xl);
-  }
-  .search > input {
-    flex-grow: 1;
-    height: 50px;
-    border: 1px solid #eaeaeb;
-    border-radius: 6px;
-    padding: var(--size-xs);
-    outline: none;
-  }
-  .search > .dateRange {
-    align-self: flex-end;
-  }
-  
-  .tableWrapper {
-    overflow: auto;
+table {
     width: 100%;
-  }
-  
-  .tableWrapper table {
-    outline: 1px solid var(--color-grey);
-    margin: 1px; 
-    width: calc(100% - 2px);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    border-spacing: 0;
+    margin: 0 auto;
     border-collapse: collapse;
-  }
-  
-  
-  .tableWrapper table > * > * > * {
-    padding: var(--size-sm);
-  }
-  
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
 
-  .tableWrapper table > * > *:not(:last-child) {
-    border-bottom: 1px solid var(--color-grey);
-  }
-  
-  .tableWrapper thead {
-    background-color: var(--color-primary);
-  }
-  
-  .tableWrapper th {
-    text-align: left;
+th {
+    background-color: #fd5800; /* Oranje kop */
     color: white;
-    border-bottom: 1px solid var(--color-grey);
-    font-weight: normal;
-    font-size: large;
-  }
-  
+    padding: 15px;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-align: left;
+}
 
-  .tableWrapper td.min {
-    width: 1%;
-    white-space: nowrap;
-  }
-  
-  .tableWrapper table .click {
+td {
+    padding: 12px 15px;
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Lichte grijze achtergrond voor even rijen */
+}
+
+tr:hover {
+    background-color: #ffe0b2; /* Oranje-achtige tint bij hover */
+    transition: background-color 0.3s ease;
+}
+
+/* Toevoegen-knop container */
+.knop-container {
+    display: flex; 
+    justify-content: flex-end; 
+    margin-bottom: 20px; 
+}
+
+.toevoegen-knop {
+    display: inline-flex;
+    align-items: center;
+    background-color: #fd5800; /* Oranje achtergrondkleur */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
-  }
-  
-  @media only screen and (max-width: 768px) {
-    .search {
-      flex-direction: column;
-    }
-  }
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.toevoegen-knop .icon {
+    display: inline-block;
+    background: white;
+    color: #fd5800; 
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+    margin-right: 10px; 
+}
+
+.toevoegen-knop:hover {
+    background-color: #e65100; /* Donkerdere oranje tint bij hover */
+    transform: translateY(-2px); 
+}
+
+.toevoegen-knop:active {
+    transform: translateY(0); 
+}
