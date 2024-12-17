@@ -71,7 +71,7 @@
                 <span class="icon">+</span> Toevoegen
             </button>
         </div>
-
+        
         <table>
             <thead>
                 <tr>
