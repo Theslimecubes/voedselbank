@@ -82,12 +82,12 @@
                     <th>Kinderen</th>
                     <th>Babies</th>
                     <th>Allergenen</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $query = "SELECT g.*, a.naam as allergeen_naam 
-                         FROM gezinnen g 
+                $query = "SELECT g.*, a.naam as allergeen_naam FROM gezinnen g 
                          LEFT JOIN allergenen a ON g.allergenen_id = a.id";
 
                 if (isset($_GET['search']) && $_GET['search'] != '') {
@@ -103,15 +103,16 @@
 
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<tr>
-                                <td>" . htmlspecialchars($row['Postcode']) . "</td>
-                                <td>" . htmlspecialchars($row['Achternaam']) . "</td>
-                                <td>" . htmlspecialchars($row['Adres']) . "</td>
-                                <td>" . htmlspecialchars($row['Volwassenen']) . "</td>
-                                <td>" . htmlspecialchars($row['Kinderen']) . "</td>
-                                <td>" . htmlspecialchars($row['Babies']) . "</td>
-                                <td>" . ($row['allergeen_naam'] ? htmlspecialchars($row['allergeen_naam']) : 'Geen') . "</td>
-                              </tr>";
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($row['Postcode']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['Achternaam']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['Adres']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['Volwassenen']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['Kinderen']) . "</td>";    
+                        echo "<td>" . htmlspecialchars($row['Babies']) . "</td>";    
+                        echo "<td>" . ($row['allergeen_naam'] ? htmlspecialchars($row['allergeen_naam']) : 'Geen') . "</td>";
+                        echo "<td><a <button href='gezinnenverwijderen.php?postcode=". htmlspecialchars($row['Postcode']) ."'>Delete</a></td>";
+                        echo "</tr>";
                     }
                 } else {
                     echo "<tr><td colspan='7'>Geen data gevonden...</td></tr>";
@@ -143,13 +144,13 @@
                 <input type="text" name="adres" id="adres" required><br><br>
 
                 <label for="volwassenen">Volwassenen:</label>
-                <input type="number" name="volwassenen" id="volwassenen" required min="0"><br><br>
+                <input type="number" name="volwassenen" id="volwassenen" required min="1"><br><br>
 
                 <label for="kinderen">Kinderen:</label>
-                <input type="number" name="kinderen" id="kinderen" required min="0"><br><br>
+                <input type="number" name="kinderen" id="kinderen"><br><br>
 
                 <label for="babies">Babies:</label>
-                <input type="number" name="babies" id="babies" required min="0"><br><br>
+                <input type="number" name="babies" id="babies"><br><br>
 
                 <label for="allergenen">Allergenen:</label>
                 <select name="allergenen" id="allergenen">
@@ -165,28 +166,15 @@
 
                 <input type="submit" value="Opslaan" class="btn btn-success">
             </form>
+            <?php
+            
+            if (isset($success_message)) {
+                echo "<p style='color: green;'>$success_message</p>";
+            } elseif (isset($error_message)) {
+                echo "<p style='color: red;'>$error_message</p>";
+            }
+            ?>
         </div>
     </div>
-
-    <?php mysqli_close($connection); ?>
-
-    <script>
-    // Close modal when clicking outside of it
-    window.onclick = function(event) {
-        var modal = document.getElementById('modal');
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    // Clear form and messages when modal is closed
-    document.querySelector('.close').onclick = function() {
-        document.querySelector('form').reset();
-        var messages = document.querySelectorAll('.modal-content > p');
-        messages.forEach(function(message) {
-            message.remove();
-        });
-    }
-    </script>
 </body>
 </html>

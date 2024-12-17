@@ -6,8 +6,8 @@ if (!$connection) {
     die("Verbinding met database mislukt: " . mysqli_connect_error());
 }
 
-$id = $_GET['id'];
-$sql = "DELETE FROM gezinnen WHERE id= '$id'";
+$postcode = $_GET['postcode'];
+$sql = "DELETE FROM gezinnen WHERE postcode= '$postcode'";
 echo $sql;
 
 if (mysqli_query($connection, $sql)) {
