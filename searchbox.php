@@ -92,12 +92,12 @@
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
-                echo"<td>" . htmlspecialchars($row['naam']) . "</td>";
-                echo"<td>" . htmlspecialchars($row['categorie_naam']) . "</td>";
-                echo"<td>" . htmlspecialchars($row['houdbaarheidsdatum']) . "</td>";
-                echo"<td>" . (isset($row['aantal']) ? htmlspecialchars($row['aantal']) : 'Niet beschikbaar') . "</td";
-                echo "<td><a <button href='product_verwijderen.php?id=". htmlspecialchars($row['id']) ."'>Delete</a></td>";
-                echo "</tr>";
+                        echo "<td>" . htmlspecialchars($row['naam']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['categorie_naam']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['houdbaarheidsdatum']) . "</td>";
+                        echo "<td>" . (isset($row['aantal']) ? htmlspecialchars($row['aantal']) : 'Niet beschikbaar') . "</td>";
+                        echo "<td><a <button href='product_verwijderen.php?id=". htmlspecialchars($row['id']) ."'>Delete</a></td>";
+                        echo "</tr>";
                     }
                 } else {
                     echo "<tr><td colspan='4'>Geen data gevonden...</td></tr>";

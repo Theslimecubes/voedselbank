@@ -99,10 +99,10 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
                 
                 echo "<tr>";
-                echo"<td>" . htmlspecialchars($row['gebruikersnaam']) . "</td>";
-                echo"<td>" . htmlspecialchars($row['email']) . "</td>";
-                echo"<td>" . htmlspecialchars($row['wachtwoord']) . "</td>";
-                echo"<td>" . htmlspecialchars($row['functie']) . "</td>";     
+                echo "<td>" . htmlspecialchars($row['gebruikersnaam']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['wachtwoord']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['functie']) . "</td>";     
                 echo "<td><a <button href='gebruikerverwijderen.php?gebruikersnaam=". htmlspecialchars($row['gebruikersnaam']) ."'>Delete</a></td>";
                 echo "</tr>";
     }
