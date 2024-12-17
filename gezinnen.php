@@ -140,10 +140,10 @@ if (mysqli_num_rows($result) > 0) {
                 <input type="number" name="volwassenen" id="volwassenen" required><br><br>
 
                 <label for="kinderen">Kinderen:</label>
-                <input type="number" name="kinderen" id="kinderen" required><br><br>
+                <input type="number" name="kinderen" id="kinderen" ><br><br>
 
                 <label for="babies">Babies:</label>
-                <input type="number" name="babies" id="babies" required><br><br>
+                <input type="number" name="babies" id="babies" ><br><br>
 
                 <button type="submit" class="btn btn-success">Opslaan</button>
             </form>
