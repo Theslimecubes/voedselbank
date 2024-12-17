@@ -105,7 +105,7 @@
         <?php
         $query = "SELECT g.id, g.achternaam, g.postcode, g.adres, g.volwassenen, g.kinderen, g.babies, g.allergenen 
                   FROM gezinnen g
-                  LEFT JOIN allergenen a ON g.id = g.gezin_id";
+                  LEFT JOIN allergenen a ON g.id = g.allergenen_id";
 
         if (isset($_GET['search']) && $_GET['search'] != '') {
             $filtervalue = mysqli_real_escape_string($connection, $_GET['search']);
@@ -126,7 +126,7 @@
             $gezin_data[$row['id']]['volwassenen'] = htmlspecialchars($row['volwassenen']);
             $gezin_data[$row['id']]['kinderen'] = htmlspecialchars($row['kinderen']);
             $gezin_data[$row['id']]['babies'] = htmlspecialchars($row['babies']);
-            $gezin_data[$row['id']]['allergenen'][] = htmlspecialchars($row['allergeen']);
+            $gezin_data[$row['id']]['allergenen'][] = htmlspecialchars($row['allergenen']);
         }
 
         foreach ($gezin_data as $gezin) {
