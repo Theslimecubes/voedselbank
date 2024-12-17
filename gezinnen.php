@@ -25,9 +25,10 @@
         $volwassenen = mysqli_real_escape_string($connection, $_POST['volwassenen']);
         $kinderen = mysqli_real_escape_string($connection, $_POST['kinderen']);
         $babies = mysqli_real_escape_string($connection, $_POST['babies']);
+        $allergenen_id = intval($_POST['allergenen_id']);
         
-        $query = "INSERT INTO gezinnen (achternaam, postcode, adres, volwassenen, kinderen, babies) 
-                  VALUES ('$achternaam', '$postcode', '$adres', '$volwassenen', '$kinderen', '$babies')";
+        $query = "INSERT INTO gezinnen (achternaam, postcode, adres, volwassenen, kinderen, babies, allergenen_id) 
+                  VALUES ('$achternaam', '$postcode', '$adres', '$volwassenen', '$kinderen', '$babies', '$allergenen_id')";
 
         if (!mysqli_query($connection, $query)) {
             die("Fout bij het invoegen van gezin: " . mysqli_error($connection));
