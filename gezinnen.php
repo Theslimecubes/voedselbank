@@ -12,14 +12,12 @@
 <body>
 
 <?php
-    
     $connection = mysqli_connect("localhost", "root", "", "voedselbankdb");
 
     if (!$connection) {
         die("Verbinding met database mislukt: " . mysqli_connect_error());
     }
 
-    
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $achternaam = mysqli_real_escape_string($connection, $_POST['achternaam']);
         $postcode = mysqli_real_escape_string($connection, $_POST['postcode']);
@@ -27,16 +25,28 @@
         $volwassenen = mysqli_real_escape_string($connection, $_POST['volwassenen']);
         $kinderen = mysqli_real_escape_string($connection, $_POST['kinderen']);
         $babies = mysqli_real_escape_string($connection, $_POST['babies']);
-        $babies = mysqli_real_escape_string($connection, $_POST['allergenen']);
-
-
-        $query = "INSERT INTO gezinnen (achternaam, postcode, adres, volwassenen, kinderen, babies, allergenen) 
-                  VALUES ('$achternaam', '$postcode', $adres, $volwassenen, $kinderen, $babies, $allergenen)";
         
-        mysqli_query($connection, $query); 
-    }
-    ?>
+        $query = "INSERT INTO gezinnen (achternaam, postcode, adres, volwassenen, kinderen, babies) 
+                  VALUES ('$achternaam', '$postcode', '$adres', '$volwassenen', '$kinderen', '$babies')";
 
+        if (!mysqli_query($connection, $query)) {
+            die("Fout bij het invoegen van gezin: " . mysqli_error($connection));
+        }
+
+        $gezin_id = mysqli_insert_id($connection);
+
+        if (!empty($_POST['allergenen'])) {
+            $allergenen = explode(",", $_POST['allergenen']);
+            foreach ($allergenen as $allergeen) {
+                $allergeen = mysqli_real_escape_string($connection, trim($allergeen));
+                $allergen_query = "INSERT INTO allergenen (gezin_id, allergeen) VALUES ('$gezin_id', '$allergeen')";
+                if (!mysqli_query($connection, $allergen_query)) {
+                    die("Fout bij het invoegen van allergenen: " . mysqli_error($connection));
+                }
+            }
+        }
+    }
+?>
 
     <nav class="navbar">
       <ul class="nav-list">
@@ -55,7 +65,11 @@
           </div>
           <li><a href="contact.html">Contact</a></li>
           <div class="button">
-              <button href="inlog2.php" class="background-3"><span class="login">Login</span></button>
+              <li class="button">
+              <a href="inlog2.php" class="background-3">
+                  <span class="login">Logout</span>
+              </a>
+          </li>
             </div>
               </div>
           </li>
@@ -74,55 +88,61 @@
             <span class="icon">+</span> Toevoegen 
         </button> 
     </div>
-</div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Postcode</th>
-                    <th>Achternaam</th>
-                    <th>Adres</th>
-                    <th>Volwassenen</th>
-                    <th>Kinderen</th>
-                    <th>Babies</th>
-                    <th>Allergenen</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+    <table>
+    <thead>
+        <tr>
+            <th>Postcode</th>
+            <th>Achternaam</th>
+            <th>Adres</th>
+            <th>Volwassenen</th>
+            <th>Kinderen</th>
+            <th>Babies</th>
+            <th>Allergenen</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $query = "SELECT g.id, g.achternaam, g.postcode, g.adres, g.volwassenen, g.kinderen, g.babies, g.allergenen 
+                  FROM gezinnen g
+                  LEFT JOIN allergenen a ON g.id = g.gezin_id";
 
-$query = "SELECT achternaam, postcode, adres, volwassenen, kinderen, babies FROM gezinnen";
+        if (isset($_GET['search']) && $_GET['search'] != '') {
+            $filtervalue = mysqli_real_escape_string($connection, $_GET['search']);
+            $query .= " WHERE CONCAT(g.achternaam, g.postcode, g.adres, g.volwassenen, g.kinderen, g.babies) LIKE '%$filtervalue%'";
+        }
 
-if (isset($_GET['search']) && $_GET['search'] != '') {
-    $filtervalue = mysqli_real_escape_string($connection, $_GET['search']);
-    $query .= " WHERE CONCAT(achternaam, postcode, adres, volwassenen, kinderen, babies) LIKE '%$filtervalue%'";
-}
+        $result = mysqli_query($connection, $query);
 
+        if (!$result) {
+            die("Query mislukt: " . mysqli_error($connection)); 
+        }
 
-$result = mysqli_query($connection, $query);
+        $gezin_data = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $gezin_data[$row['id']]['achternaam'] = htmlspecialchars($row['achternaam']);
+            $gezin_data[$row['id']]['postcode'] = htmlspecialchars($row['postcode']);
+            $gezin_data[$row['id']]['adres'] = htmlspecialchars($row['adres']);
+            $gezin_data[$row['id']]['volwassenen'] = htmlspecialchars($row['volwassenen']);
+            $gezin_data[$row['id']]['kinderen'] = htmlspecialchars($row['kinderen']);
+            $gezin_data[$row['id']]['babies'] = htmlspecialchars($row['babies']);
+            $gezin_data[$row['id']]['allergenen'][] = htmlspecialchars($row['allergeen']);
+        }
 
+        foreach ($gezin_data as $gezin) {
+            echo "<tr>
+                    <td>" . $gezin['postcode'] . "</td>
+                    <td>" . $gezin['achternaam'] . "</td>
+                    <td>" . $gezin['adres'] . "</td>
+                    <td>" . $gezin['volwassenen'] . "</td>
+                    <td>" . $gezin['kinderen'] . "</td>
+                    <td>" . $gezin['babies'] . "</td>
+                    <td>" . implode(", ", $gezin['allergenen']) . "</td>
+                  </tr>";
+        }
+        ?>
+    </tbody>
+</table>
 
-if (!$result) {
-    die("Query mislukt: " . mysqli_error($connection)); 
-}
-
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<tr>
-                                <td>" . htmlspecialchars($row['postcode']) . "</td>
-                                <td>" . htmlspecialchars($row['achternaam']) . "</td>
-                                <td>" . htmlspecialchars($row['adres']) . "</td>
-                                <td>" . htmlspecialchars($row['volwassenen']) . "</td>
-                                <td>" . htmlspecialchars($row['kinderen']) . "</td>
-                                <td>" . htmlspecialchars($row['babies']) . "</td>
-                              </tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='4'>Geen data gevonden...</td></tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
 
     <div id="modal" class="modal">
         <div class="modal-content">
