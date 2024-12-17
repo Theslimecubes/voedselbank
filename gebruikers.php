@@ -84,7 +84,7 @@
 
 if (isset($_GET['search']) && $_GET['search'] != '') {
     $filtervalue = mysqli_real_escape_string($connection, $_GET['search']);
-    $query .= " WHERE CONCAT(gebruikersnaam, email, wachtwoord, functie) LIKE '%$filtervalue%'";
+    $query .= "WHERE CONCAT(gebruikersnaam, email, wachtwoord, functie) LIKE '%$filtervalue%'";
 }
 
 
@@ -103,7 +103,7 @@ if (mysqli_num_rows($result) > 0) {
                 echo"<td>" . htmlspecialchars($row['email']) . "</td>";
                 echo"<td>" . htmlspecialchars($row['wachtwoord']) . "</td>";
                 echo"<td>" . htmlspecialchars($row['functie']) . "</td>";     
-                echo "<td><a href='gebruikerverwijderen.php?gebruikersnaam=".$row['gebruikersnaam']."'></a></td>";
+                echo "<td><a href='gebruikerverwijderen.php?gebruikersnaam=".htmlspecialchars($row['functie']) ."'></a></td>";
                 echo "</tr>";
     }
 } else {
