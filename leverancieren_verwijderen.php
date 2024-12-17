@@ -7,12 +7,12 @@ if (!$connection) {
 }
 
 $id = $_GET['id'];
-$sql = "DELETE FROM producten WHERE id= '$id'";
+$sql = "DELETE FROM  WHERE gebruikersnaam = '$gebruikersnaam'";
 echo $sql;
 
 if (mysqli_query($connection, $sql)) {
   echo "Record deleted successfully";
-  header("Location: searchbox.php");
+  header("Location: gebruikers.php");
 } else {
   echo "Error deleting record: " . mysqli_error($connection);
 }
