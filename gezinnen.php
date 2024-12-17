@@ -148,7 +148,7 @@ if (mysqli_num_rows($result) > 0) {
                 <input type="number" name="babies" id="babies"><br><br>
 
                 <label for="allergenen">Allergenen:</label>
-                <input type="text" name="allergenen" id="alergenen"><br><br>
+                <input type="text" name="allergenen" id="allergenen"><br><br>
 
 
                 <button type="submit" class="btn btn-success">Opslaan</button>
