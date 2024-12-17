@@ -40,7 +40,7 @@
             $allergenen = explode(",", $_POST['allergenen']);
             foreach ($allergenen as $allergeen) {
                 $allergeen = mysqli_real_escape_string($connection, trim($allergeen));
-                $allergen_query = "INSERT INTO allergenen (gezin_id, allergeen) VALUES ('$gezin_id', '$allergeen')";
+                $allergen_query = "INSERT INTO allergenen (gezin_id, allergeeen_id) VALUES ('$gezin_id', '$allergeen')";
                 if (!mysqli_query($connection, $allergen_query)) {
                     die("Fout bij het invoegen van allergenen: " . mysqli_error($connection));
                 }
