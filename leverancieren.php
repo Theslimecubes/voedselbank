@@ -71,6 +71,7 @@
                     <th>Contactpersoon</th>
                     <th>Telefoon</th>
                     <th>Volgende levering</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -93,13 +94,14 @@ if (!$result) {
 
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>
-                <td>" . htmlspecialchars($row['id']) . "</td>
-                <td>" . htmlspecialchars($row['naam']) . "</td>
-                <td>" . htmlspecialchars($row['contactpersoon']) . "</td>
-                <td>" . htmlspecialchars($row['telefoon']) . "</td>
-                <td>" . htmlspecialchars($row['volgende_levering']) . "</td>
-              </tr>";
+        echo "<tr>";
+                echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['naam']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['contactpersoon']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['telefoon']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['volgende_levering']) . "</td>";       
+                echo "<td><a <button href='leverancieren_verwijderen.php?id=". htmlspecialchars($row['id']) ."'>Delete</a></td>";
+                echo "</tr>";
     }
 } else {
     echo "<tr><td colspan='5'>Geen data gevonden...</td></tr>";

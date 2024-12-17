@@ -67,6 +67,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>id</th>
                     <th>Naam</th>
                     <th>Categorie</th>
                     <th>Houdsbaarheid datum</th>
@@ -90,6 +91,7 @@
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
+                        echo "<td>" . htmlspecialchars($row['id']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['naam']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['categorie_naam']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['houdbaarheidsdatum']) . "</td>";
