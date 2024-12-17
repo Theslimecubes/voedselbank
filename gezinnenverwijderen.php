@@ -6,8 +6,8 @@ if (!$connection) {
     die("Verbinding met database mislukt: " . mysqli_connect_error());
 }
 
-$gebruikersnaam = $_GET['gebruikersnaam'];
-$sql = "DELETE FROM gebruikers WHERE gebruikersnaam = '$gebruikersnaam'";
+$id = $_GET['id'];
+$sql = "DELETE FROM gezinnen WHERE id= '$id'";
 echo $sql;
 
 if (mysqli_query($connection, $sql)) {
