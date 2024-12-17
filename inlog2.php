@@ -35,16 +35,16 @@
   </body>
 </html>
 <?php 
-$conn = mysqli_connect("localhost", "root", "", "inlog-voedselbank");
+$conn = mysqli_connect("localhost", "root", "", "voedselbankdb");
 if(isset($_POST['login_button'])){
   $email=$_POST['email'];
   $password=$_POST['password'];
-  $sql= "SELECT * FROM logindetails WHERE email = '$email'";
+  $sql= "SELECT * FROM gebruikers WHERE email = '$email'";
   $result = mysqli_query($conn, $sql);
   while($row = mysqli_fetch_assoc($result)){
-    $resultPassword = $row['password'];
+    $resultPassword = $row['wachtwoord'];
     if($password == $resultPassword){
-      header('location: http://localhost/voedselbank/voedselbank/home.html');
+      header('location: http://localhost/voedselbank/voedselbank-2/home.html');
       exit;
     }else{ 
       echo "error";
