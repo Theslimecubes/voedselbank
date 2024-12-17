@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gebruikers</title>
+    <title>Gezinnen</title>
     <link rel="stylesheet" href="producten.css">
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
@@ -29,7 +29,7 @@
         $babies = mysqli_real_escape_string($connection, $_POST['babies']);
 
 
-        $query = "INSERT INTO gebruikers (achternaam, postcode, adres, volwassenen, kinderen, babies) 
+        $query = "INSERT INTO gezinnen (achternaam, postcode, adres, volwassenen, kinderen, babies) 
                   VALUES ('$achternaam', '$postcode', $adres, $volwassenen, $kinderen, $babies)";
         
         mysqli_query($connection, $query); 
@@ -78,7 +78,7 @@
             <thead>
                 <tr>
                     <th>Postcode</th>
-                    <th>Achterachternaam</th>
+                    <th>Achternaam</th>
                     <th>Adres</th>
                     <th>Volwassenen</th>
                     <th>Kinderen</th>
@@ -88,20 +88,26 @@
             <tbody>
                 <?php
 
-                $query = "SELECT g.*, g.achternaam AS achternaam FROM gebruikers g";
+$query = "SELECT achternaam, postcode, adres, volwassenen, kinderen, babies FROM gezinnen";
 
-                
-                if (isset($_GET['search']) && $_GET['search'] != '') {
-                    $filtervalue = mysqli_real_escape_string($connection, $_GET['search']);
-                }
+if (isset($_GET['search']) && $_GET['search'] != '') {
+    $filtervalue = mysqli_real_escape_string($connection, $_GET['search']);
+    $query .= " WHERE CONCAT(achternaam, postcode, adres, volwassenen, kinderen, babies) LIKE '%$filtervalue%'";
+}
 
-                $result = mysqli_query($connection, $query);
 
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
+$result = mysqli_query($connection, $query);
+
+
+if (!$result) {
+    die("Query mislukt: " . mysqli_error($connection)); 
+}
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>
                                 <td>" . htmlspecialchars($row['postcode']) . "</td>
-                                <td>" . htmlspecialchars($row['achterachternaam']) . "</td>
+                                <td>" . htmlspecialchars($row['achternaam']) . "</td>
                                 <td>" . htmlspecialchars($row['adres']) . "</td>
                                 <td>" . htmlspecialchars($row['volwassenen']) . "</td>
                                 <td>" . htmlspecialchars($row['kinderen']) . "</td>
@@ -124,8 +130,8 @@
                 <label for="postcode">Postcode:</label>
                 <input type="text" name="postcode" id="postcode" required><br><br>
 
-                <label for="achterachternaam">Achterachternaam:</label>
-                <input type="text" name="achterachternaam" id="achterachternaam" required><br><br>
+                <label for="achternaam">Achternaam:</label>
+                <input type="text" name="achternaam" id="achternaam" required><br><br>
 
                 <label for="adres">Adres:</label>
                 <input type="text" name="adres" id="adres" required><br><br>
