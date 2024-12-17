@@ -39,16 +39,14 @@
                 <button class="dropbtn">Overzicht</button>
                 <div class="dropdown-content">
                     <a href="searchbox.php">Producten</a>
-                    <a href="gebruikers">Gebruikers</a>
+                    <a href="gebruikers.php">Gebruikers</a>
                     <a href="gezinnen.php">Gezinnen</a>
                     <a href="leverancieren.php">Leveranciers</a>
                     <a href="voedselpakket.php">Voedsel pakketten</a>
                 </div>
             </div>
-            <li><a href="contact">Contact</a></li>
-            <div class="button">
-                <button href="inlog.html" class="background-3"><span class="login">Login</span></button>
-            </div>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="inlog2.php" class="background-3">Logout</span></a></li>
         </ul>
     </nav>
 
