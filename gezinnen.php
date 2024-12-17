@@ -21,13 +21,16 @@
 
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $naam = mysqli_real_escape_string($connection, $_POST['naam']);
-        $email = mysqli_real_escape_string($connection, $_POST['email']);
-        $password = mysqli_real_escape_string($connection, $_POST['password']);
-        $functie = intval($_POST['functie']);
+        $achternaam = mysqli_real_escape_string($connection, $_POST['achternaam']);
+        $postcode = mysqli_real_escape_string($connection, $_POST['postcode']);
+        $adres = mysqli_real_escape_string($connection, $_POST['adres']);
+        $volwassenen = mysqli_real_escape_string($connection, $_POST['volwassenen']);
+        $kinderen = mysqli_real_escape_string($connection, $_POST['kinderen']);
+        $babies = mysqli_real_escape_string($connection, $_POST['babies']);
 
-        $query = "INSERT INTO gebruikers (naam, email, password, functie) 
-                  VALUES ('$naam', '$email', $password, $functie)";
+
+        $query = "INSERT INTO gebruikers (achternaam, postcode, adres, volwassenen, kinderen, babies) 
+                  VALUES ('$achternaam', '$postcode', $adres, $volwassenen, $kinderen, $babies)";
         
         mysqli_query($connection, $query); 
     }
@@ -75,7 +78,7 @@
             <thead>
                 <tr>
                     <th>Postcode</th>
-                    <th>Achternaam</th>
+                    <th>Achterachternaam</th>
                     <th>Adres</th>
                     <th>Volwassenen</th>
                     <th>Kinderen</th>
@@ -85,7 +88,7 @@
             <tbody>
                 <?php
 
-                $query = "SELECT g.*, g.naam AS naam FROM gebruikers g";
+                $query = "SELECT g.*, g.achternaam AS achternaam FROM gebruikers g";
 
                 
                 if (isset($_GET['search']) && $_GET['search'] != '') {
@@ -98,7 +101,7 @@
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>
                                 <td>" . htmlspecialchars($row['postcode']) . "</td>
-                                <td>" . htmlspecialchars($row['achternaam']) . "</td>
+                                <td>" . htmlspecialchars($row['achterachternaam']) . "</td>
                                 <td>" . htmlspecialchars($row['adres']) . "</td>
                                 <td>" . htmlspecialchars($row['volwassenen']) . "</td>
                                 <td>" . htmlspecialchars($row['kinderen']) . "</td>
@@ -121,8 +124,8 @@
                 <label for="postcode">Postcode:</label>
                 <input type="text" name="postcode" id="postcode" required><br><br>
 
-                <label for="achternaam">Achternaam:</label>
-                <input type="text" name="achternaam" id="achternaam" required><br><br>
+                <label for="achterachternaam">Achterachternaam:</label>
+                <input type="text" name="achterachternaam" id="achterachternaam" required><br><br>
 
                 <label for="adres">Adres:</label>
                 <input type="text" name="adres" id="adres" required><br><br>
