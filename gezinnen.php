@@ -114,7 +114,6 @@ if (mysqli_num_rows($result) > 0) {
                                 <td>" . htmlspecialchars($row['volwassenen']) . "</td>
                                 <td>" . htmlspecialchars($row['kinderen']) . "</td>
                                 <td>" . htmlspecialchars($row['babies']) . "</td>
-                                <td>" . htmlspecialchars($row['allergenen']) . "</td>
                               </tr>";
                     }
                 } else {
