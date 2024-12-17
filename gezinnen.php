@@ -27,10 +27,11 @@
         $volwassenen = mysqli_real_escape_string($connection, $_POST['volwassenen']);
         $kinderen = mysqli_real_escape_string($connection, $_POST['kinderen']);
         $babies = mysqli_real_escape_string($connection, $_POST['babies']);
+        $babies = mysqli_real_escape_string($connection, $_POST['allergenen']);
 
 
-        $query = "INSERT INTO gezinnen (achternaam, postcode, adres, volwassenen, kinderen, babies) 
-                  VALUES ('$achternaam', '$postcode', $adres, $volwassenen, $kinderen, $babies)";
+        $query = "INSERT INTO gezinnen (achternaam, postcode, adres, volwassenen, kinderen, babies, allergenen) 
+                  VALUES ('$achternaam', '$postcode', $adres, $volwassenen, $kinderen, $babies, $allergenen)";
         
         mysqli_query($connection, $query); 
     }
@@ -88,11 +89,11 @@
             <tbody>
                 <?php
 
-$query = "SELECT achternaam, postcode, adres, volwassenen, kinderen, babies FROM gezinnen";
+$query = "SELECT achternaam, postcode, adres, volwassenen, kinderen, babies, allergenen FROM gezinnen";
 
 if (isset($_GET['search']) && $_GET['search'] != '') {
     $filtervalue = mysqli_real_escape_string($connection, $_GET['search']);
-    $query .= " WHERE CONCAT(achternaam, postcode, adres, volwassenen, kinderen, babies) LIKE '%$filtervalue%'";
+    $query .= " WHERE CONCAT(achternaam, postcode, adres, volwassenen, kinderen, babies, allergenen) LIKE '%$filtervalue%'";
 }
 
 
@@ -112,6 +113,7 @@ if (mysqli_num_rows($result) > 0) {
                                 <td>" . htmlspecialchars($row['volwassenen']) . "</td>
                                 <td>" . htmlspecialchars($row['kinderen']) . "</td>
                                 <td>" . htmlspecialchars($row['babies']) . "</td>
+                                <td>" . htmlspecialchars($row['allergenen']) . "</td>
                               </tr>";
                     }
                 } else {
@@ -137,13 +139,17 @@ if (mysqli_num_rows($result) > 0) {
                 <input type="text" name="adres" id="adres" required><br><br>
 
                 <label for="volwassenen">Volwassenen:</label>
-                <input type="number" name="volwassenen" id="volwassenen" required><br><br>
+                <input type="number" name="volwassenen" id="volwassenen"><br><br>
 
                 <label for="kinderen">Kinderen:</label>
-                <input type="number" name="kinderen" id="kinderen" ><br><br>
+                <input type="number" name="kinderen" id="kinderen"><br><br>
 
                 <label for="babies">Babies:</label>
-                <input type="number" name="babies" id="babies" ><br><br>
+                <input type="number" name="babies" id="babies"><br><br>
+
+                <label for="allergenen">Allergenen:</label>
+                <input type="text" name="allergenen" id="alergenen"><br><br>
+
 
                 <button type="submit" class="btn btn-success">Opslaan</button>
             </form>

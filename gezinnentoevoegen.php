@@ -15,13 +15,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $volwassenen= mysqli_real_escape_string($connection, $_POST['volwassenen']);
     $kinderen= mysqli_real_escape_string($connection, $_POST['kinderen']);
     $babies= mysqli_real_escape_string($connection, $_POST['babies']);
+    $allergenen= mysqli_real_escape_string($connection, $_POST['allergenen']);
     
-    if (empty($achternaam) || empty($postcode) || empty($adres) || 0>($volwassenen)  || 0>($kinderen) || 0>($babies)) {
+    if (empty($achternaam) || empty($postcode) || empty($adres) || 0>($volwassenen)  || 0>($kinderen) || 0>($babies) || empty($allergenen) ) {
         echo "Alle velden moeten ingevuld zijn.";
     } else {
         
-        $query = "INSERT INTO gezinnen (achternaam, postcode, adres, volwassenen, kinderen, babies) 
-                  VALUES ('$achternaam', '$postcode', '$adres', '$volwassenen', '$kinderen', '$babies')";
+        $query = "INSERT INTO gezinnen (achternaam, postcode, adres, volwassenen, kinderen, babies, allergenen) 
+                  VALUES ('$achternaam', '$postcode', '$adres', '$volwassenen', '$kinderen', '$babies, $allergenen')";
 
        
         if (mysqli_query($connection, $query)) {
