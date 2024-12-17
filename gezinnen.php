@@ -54,9 +54,7 @@
                 </div>
             </div>
             <li><a href="contact.html">Contact</a></li>
-            <div class="button">
-                <button href="inlog2.php" class="background-3"><span class="login">Login</span></button>
-            </div>
+            <li><a href="inlog2.php" class="background-3">Logout</span></a></li>
         </ul>
     </nav>
 
