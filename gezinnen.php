@@ -58,20 +58,19 @@
       </ul>
   </nav>
 
-    <div class="container mt-5">
-        <form method="get">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" name="search" placeholder="Zoek hier..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
-                <button type="submit" class="btn btn-primary">Zoeken</button>
-            </div>
-        </form>
-
-        <div class="knop-container">
-            <button class="toevoegen-knop" onclick="document.getElementById('modal').style.display='block'">
-                <span class="icon">+</span> Toevoegen
-            </button>
-        </div>
-        
+  <div class="container mt-5">
+    <form method="get"> 
+        <div class="input-group mb-3"> 
+            <input type="text" class="form-control" name="search" placeholder="Zoek hier..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>"> 
+            <button type="submit" class="btn btn-primary">Zoeken</button> 
+        </div> 
+    </form> 
+    <div class="knop-container"> 
+        <button class="toevoegen-knop" onclick="document.getElementById('modal').style.display='block'"> 
+            <span class="icon">+</span> Toevoegen 
+        </button> 
+    </div>
+</div>
         <table>
             <thead>
                 <tr>
