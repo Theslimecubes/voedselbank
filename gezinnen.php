@@ -84,16 +84,17 @@
                     <th>Volwassenen</th>
                     <th>Kinderen</th>
                     <th>Babies</th>
+                    <th>Allergenen</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
 
-$query = "SELECT achternaam, postcode, adres, volwassenen, kinderen, babies, allergenen FROM gezinnen";
+$query = "SELECT achternaam, postcode, adres, volwassenen, kinderen, babies FROM gezinnen";
 
 if (isset($_GET['search']) && $_GET['search'] != '') {
     $filtervalue = mysqli_real_escape_string($connection, $_GET['search']);
-    $query .= " WHERE CONCAT(achternaam, postcode, adres, volwassenen, kinderen, babies, allergenen) LIKE '%$filtervalue%'";
+    $query .= " WHERE CONCAT(achternaam, postcode, adres, volwassenen, kinderen, babies) LIKE '%$filtervalue%'";
 }
 
 
@@ -148,7 +149,7 @@ if (mysqli_num_rows($result) > 0) {
                 <input type="number" name="babies" id="babies"><br><br>
 
                 <label for="allergenen">Allergenen:</label>
-                <input type="text" name="allergenen" id="alergenen"><br><br>
+                <input type="text" name="allergenen" id="allergenen"><br><br>
 
 
                 <button type="submit" class="btn btn-success">Opslaan</button>
