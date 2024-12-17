@@ -6,13 +6,13 @@ if (!$connection) {
     die("Verbinding met database mislukt: " . mysqli_connect_error());
 }
 
-$gebruikersnaam = $_GET['gebruikersnaam'];
-$sql = "DELETE FROM gebruikers WHERE gebruikersnaam = '$gebruikersnaam'";
+$id = $_GET['id'];
+$sql = "DELETE FROM producten WHERE id= '$id'";
 echo $sql;
 
 if (mysqli_query($connection, $sql)) {
   echo "Record deleted successfully";
-  header("Location: gebruikers.php");
+  header("Location: producten.php");
 } else {
   echo "Error deleting record: " . mysqli_error($connection);
 }
