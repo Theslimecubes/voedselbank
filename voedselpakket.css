@@ -1,0 +1,80 @@
+table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+th {
+    background-color: #fd5800; /* Oranje kop */
+    color: white;
+    padding: 15px;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+td {
+    padding: 12px 15px;
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Lichte grijze achtergrond voor even rijen */
+}
+
+tr:hover {
+    background-color: #ffe0b2; /* Oranje-achtige tint bij hover */
+    transition: background-color 0.3s ease;
+}
+
+/* Toevoegen-knop container */
+.knop-container {
+    display: flex; 
+    justify-content: flex-end; 
+    margin-bottom: 20px; 
+}
+
+.toevoegen-knop {
+    display: inline-flex;
+    align-items: center;
+    background-color: #fd5800; /* Oranje achtergrondkleur */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.toevoegen-knop .icon {
+    display: inline-block;
+    background: white;
+    color: #fd5800; 
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+    margin-right: 10px; 
+}
+
+.toevoegen-knop:hover {
+    background-color: #e65100; /* Donkerdere oranje tint bij hover */
+    transform: translateY(-2px); 
+}
+
+.toevoegen-knop:active {
+    transform: translateY(0); 
+}
