@@ -42,7 +42,6 @@ CREATE TABLE IF NOT EXISTS `logindetails` (
 INSERT INTO `logindetails` (`id`, `email`, `password`) VALUES
 (1, 'aimenabbassi03@voedselbank.nl', 'voedselbankyay'),
 (2, 'janpiet@mail.com', 'Piet'),
-(10, 'janpiet@mail.com', 'Piet');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
