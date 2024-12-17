@@ -73,6 +73,7 @@
                     <th>Email</th>
                     <th>Wachtwoord</th>
                     <th>Functie</th>
+                    <th>Delete</th>
                     
                 </tr>
             </thead>
@@ -96,12 +97,14 @@ if (!$result) {
 
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>
                 
-                <td>" . htmlspecialchars($row['gebruikersnaam']) . "</td>
-                <td>" . htmlspecialchars($row['email']) . "</td>
-                <td>" . htmlspecialchars($row['wachtwoord']) . "</td>
-                <td>" . htmlspecialchars($row['functie']) . "</td> </tr>";
+                echo "<tr>";
+                echo"<td>" . htmlspecialchars($row['gebruikersnaam']) . "</td>";
+                echo"<td>" . htmlspecialchars($row['email']) . "</td>";
+                echo"<td>" . htmlspecialchars($row['wachtwoord']) . "</td>";
+                echo"<td>" . htmlspecialchars($row['functie']) . "</td>";     
+                echo "<td><a href='gebruikerverwijderen.php?gebruikersnaam=".$row['gebruikersnaam']."'></a></td>";
+                echo "</tr>";
     }
 } else {
     echo "<tr><td colspan='5'>Geen data gevonden...</td></tr>";
