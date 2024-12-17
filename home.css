@@ -183,17 +183,17 @@
     background: rgba(0, 0, 0, 0);
     z-index: 28;
   }
-.background-3 {
+/* .background-3 {
     position: relative;
-    width: 70px;
-    height: 21px;
-    margin: 3px 0 0 3px;
+    width: 7px;
+    height: 2px;
+    margin: 0px 0 0 1px;
     cursor: pointer;
     background: #f3600e;
     border: 1px solid #fa732e;
     z-index: 29;
-    border-radius: 8.75px;
-  }
+    border-radius: 1px;
+  } */
   .login {
     display: flex;
     align-items: center;
