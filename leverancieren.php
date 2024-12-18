@@ -68,7 +68,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Naam</th>
-                    <th>Contactpersoon</th>
+                    <th>Contact</th>
                     <th>Telefoon</th>
                     <th>Volgende levering</th>
                     <th>Delete</th>

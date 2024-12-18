@@ -70,7 +70,7 @@
                     <th>id</th>
                     <th>Naam</th>
                     <th>Categorie</th>
-                    <th>Houdsbaarheid datum</th>
+                    <th>Houdbaarheid</th>
                     <th>Aantal</th>
                     <th>Delete</th>
                 </tr>
