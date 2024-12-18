@@ -15,7 +15,7 @@
         die("Verbinding met database mislukt: " . mysqli_connect_error());
     }
 
-    // Handle delete request
+    // Verwijder knop/verwijderen van database
     if (isset($_POST['delete_package'])) {
         $package_id = mysqli_real_escape_string($connection, $_POST['package_id']);
         
@@ -71,7 +71,7 @@
         }
         ?>
 
-        <!-- Search form -->
+        <!-- Zoeken form -->
         <form method="get" style="margin-bottom: 2rem;">
             <div style="display: flex; gap: 1rem; align-items: center;">
                 <input type="text" 
@@ -83,14 +83,14 @@
             </div>
         </form>
 
-        <!-- Add new package button -->
+        <!-- Nieuwevoedselpakket knop -->
         <div class="knop-container" style="margin-bottom: 2rem;">
             <a href="voedselpakket-aanmaken.php" class="toevoegen-knop">
                 <span class="icon">+</span> Nieuw Voedselpakket
             </a>
         </div>
 
-        <!-- Packages table -->
+        <!-- Voedselpakketen tabel -->
         <table>
             <thead>
                 <tr>
@@ -134,13 +134,13 @@
                         
                         if ($row['afleverdatum'] < $current_date) {
                             $status = 'Afgeleverd';
-                            $status_color = '#198754';  // Success color
+                            $status_color = '#198754';  // succes kleur
                         } elseif ($row['afleverdatum'] == $current_date) {
                             $status = 'Vandaag Afleveren';
-                            $status_color = '#fd7e14';  // Warning color
+                            $status_color = '#fd7e14';  // waarschuwing kleur color
                         } else {
                             $status = 'In Behandeling';
-                            $status_color = '#0d6efd';  // Primary color
+                            $status_color = '#0d6efd';  // primare color
                         }
 
                         echo "<tr>
@@ -161,7 +161,7 @@
                                 <td colspan='7'>
                                     <div style='padding: 1.5rem; background: var(--background-alt);'>";
                         
-                        // Fetch and display products in this package
+                        // Zoek en display producten in dit pakket
                         $products_query = "SELECT p.naam, vp.hoeveelheid, c.naam as categorie_naam
                                          FROM voedselpakketten_has_producten vp
                                          JOIN producten p ON vp.product_id = p.id
@@ -190,7 +190,7 @@
                             echo "</table>";
                         }
                         
-                        // Action buttons
+                        // actie knoppen
                         echo "<div style='margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); text-align: center;'>
                                 <div style='display: flex; justify-content: center; gap: 1rem;'>
                                     <button onclick='showPackageDetails(" . $row['id'] . ")'>
