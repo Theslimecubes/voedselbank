@@ -15,13 +15,13 @@
         die("Verbinding met database mislukt: " . mysqli_connect_error());
     }
 
-    // Handle form submission for creating a food package
+    // Voedselpakket aanmaken
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_package'])) {
         $gezin_id = mysqli_real_escape_string($connection, $_POST['gezin_id']);
         $aanmaakdatum = date('Y-m-d');
         $afleverdatum = mysqli_real_escape_string($connection, $_POST['afleverdatum']);
     
-        // Simple insert using gezin_id directly
+        // gezin Id toevoegen
         $query = "INSERT INTO voedselpakketten (gezin_id, aanmaakdatum, afleverdatum) 
                   VALUES ('$gezin_id', '$aanmaakdatum', '$afleverdatum')";
         
@@ -29,21 +29,21 @@
             $pakket_id = mysqli_insert_id($connection);
             $success = true;
             
-            // Process selected products
+            // Process geselcteerde producten
             if (isset($_POST['products'])) {
                 foreach ($_POST['products'] as $product_id => $quantity) {
                     if ($quantity > 0) {
                         $product_id = mysqli_real_escape_string($connection, $product_id);
                         $quantity = mysqli_real_escape_string($connection, $quantity);
                         
-                        // Insert product into package
+                        // Voeg product toe aan aan pakket
                         $query = "INSERT INTO voedselpakketten_has_producten (pakket_id, product_id, hoeveelheid) 
                                  VALUES ('$pakket_id', '$product_id', '$quantity')";
                         if (!mysqli_query($connection, $query)) {
                             $success = false;
                         }
                         
-                        // Update product inventory
+                        // Update producten data
                         $update_query = "UPDATE producten 
                                        SET aantal = aantal - $quantity 
                                        WHERE id = '$product_id' AND aantal >= $quantity";
@@ -129,6 +129,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!--product tabel -->
                     <?php
                     $query = "SELECT p.id, p.naam, p.aantal, p.houdbaarheidsdatum, c.naam as categorie_naam 
                              FROM producten p 
@@ -161,7 +162,7 @@
     <?php mysqli_close($connection); ?>
 
     <script>
-    // Add basic form validation
+    // validatie 
     document.querySelector('form').onsubmit = function(e) {
         const products = document.querySelectorAll('input[type="number"]');
         let hasProducts = false;
