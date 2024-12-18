@@ -10,14 +10,13 @@
     <link rel="stylesheet" href="toevoegenknop.css">
 </head>
 <body>
+<!-- Database Connectie -->
     <?php
     $connection = mysqli_connect("localhost", "root", "", "voedselbankdb");
 
     if (!$connection) {
         die("Verbinding met database mislukt: " . mysqli_connect_error());
     }
-
-    // Handle form submission directly in this page
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $postcode = mysqli_real_escape_string($connection, $_POST['postcode']);
         $achternaam = mysqli_real_escape_string($connection, $_POST['achternaam']);
@@ -37,7 +36,7 @@
         }
     }
     ?>
-
+    <!-- Navbar -->
     <nav class="navbar">
         <ul class="nav-list">
             <div class="image"></div>
@@ -65,7 +64,7 @@
                 <button type="submit" class="btn btn-primary">Zoeken</button>
             </div>
         </form>
-
+         <!-- Gezinnen toevoegen -->
         <div class="knop-container">
             <button class="toevoegen-knop" onclick="document.getElementById('modal').style.display='block'">
                 <span class="icon">+</span> Toevoegen
@@ -86,6 +85,7 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- Allergien Database connectie -->
                 <?php
                 $query = "SELECT g.*, a.naam as allergeen_naam FROM gezinnen g 
                          LEFT JOIN allergenen a ON g.allergenen_id = a.id";
@@ -96,7 +96,7 @@
                 }
 
                 $result = mysqli_query($connection, $query);
-
+                
                 if (!$result) {
                     die("Query mislukt: " . mysqli_error($connection));
                 }
@@ -121,7 +121,7 @@
             </tbody>
         </table>
     </div>
-
+    <!-- Gezinnen toevoegen echo -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
@@ -133,6 +133,7 @@
                 echo "<p style='color: red;'>$error_message</p>";
             }
             ?>
+            <!-- Gezinnen / allergenen formulier -->
             <form method="POST">
                 <label for="postcode">Postcode:</label>
                 <input type="text" name="postcode" id="postcode" required pattern="[1-9][0-9]{3}\s?[A-Za-z]{2}" title="Vul een geldige postcode in (bijv. 1234 AB)"><br><br>
@@ -167,7 +168,7 @@
                 <input type="submit" value="Opslaan" class="btn btn-success">
             </form>
             <?php
-            
+    
             if (isset($success_message)) {
                 echo "<p style='color: green;'>$success_message</p>";
             } elseif (isset($error_message)) {
